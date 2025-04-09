@@ -1,0 +1,26 @@
+{
+  "name": "floriansdv/sparkframe-firestarter",
+  "description": "A skeleton project using the Sparkframe framework.",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "FlorianSDV",
+      "email": "93703843+FlorianSDV@users.noreply.github.com"
+    }
+  ],
+  "require": {
+    "floriansdv/sparkframe": "dev-main"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../Sparkframe"
+    }
+  ]
+}
