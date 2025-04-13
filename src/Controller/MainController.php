@@ -12,8 +12,8 @@ class MainController extends BaseController
     }
 
     #[Route('/', 'GET')]
-    public function index()
+    public function index(): string
     {
-
+        return 'index!';
     }
 }
