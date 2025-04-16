@@ -10,14 +10,17 @@ use Sparkframe\Request\RequestHandler;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$bootstrapper = Bootstrapper::getInstance();
-
-$root_dir = dirname(__DIR__, 2);
-$bootstrapper->bootstrap($root_dir);
-
-$requestHandler = new RequestHandler();
-
 try {
+    $root_dir = dirname(__DIR__, 2);
+    $bootstrapper = Bootstrapper::getInstance();
+
+    $bootstrapper->bootstrap($root_dir);
+    $database_info_collection = new DatabaseInfoCollection();
+
+    $bootstrapper->setupDatabaseConnections($database_info_collection);
+
+    $requestHandler = new RequestHandler();
+
     echo $requestHandler->handle();
 } catch (\Exception $e) {
     echo "<pre>";
