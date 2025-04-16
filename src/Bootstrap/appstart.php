@@ -14,10 +14,12 @@ try {
     $root_dir = dirname(__DIR__, 2);
     $bootstrapper = Bootstrapper::getInstance();
 
-    $bootstrapper->bootstrap($root_dir);
+    $bootstrapper->initializeGlobals($root_dir);
     $database_info_collection = new DatabaseInfoCollection();
 
     $bootstrapper->setupDatabaseConnections($database_info_collection);
+    $bootstrapper->setupControllers();
+    $bootstrapper->setupRouter();
 
     $requestHandler = new RequestHandler();
 
