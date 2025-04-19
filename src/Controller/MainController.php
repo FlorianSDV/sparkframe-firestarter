@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Sparkframe\Attributes\Route;
+use Sparkframe\Tools\RequestMethod;
 
 class MainController extends BaseController
 {
@@ -15,7 +16,8 @@ class MainController extends BaseController
         return 'main function';
     }
 
-    #[Route('/', 'GET')]
+    //werkt
+    #[Route('/', RequestMethod::GET)]
     public function index(): string
     {
         return 'index!';
