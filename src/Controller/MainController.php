@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\MainModel;
 use Sparkframe\Attributes\Route;
 use Sparkframe\Tools\RequestMethod;
 
@@ -9,7 +10,7 @@ class MainController extends BaseController
 {
     public function __construct()
     {
-        parent::__construct('Default');
+        parent::__construct(new MainModel());
     }
     public function mainFunc(): string
     {

@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use Sparkframe\Controller\Controller;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
-
-
+    // Optional class for your controllers.
+    // Add here things you want all your controllers to have.
 }
