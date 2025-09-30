@@ -15,12 +15,12 @@
     }
   ],
   "require": {
-    "floriansdv/sparkframe": "dev-main"
+    "floriansdv/sparkframe": "dev-master"
   },
   "repositories": [
     {
-      "type": "path",
-      "url": "../Sparkframe"
+      "type": "vcs",
+      "url": "git@github.com:FlorianSDV/Sparkframe.git"
     }
   ]
 }
