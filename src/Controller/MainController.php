@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Model\MainModel;
@@ -11,10 +13,6 @@ class MainController extends BaseController
     public function __construct()
     {
         parent::__construct(new MainModel());
-    }
-    public function mainFunc(): string
-    {
-        return 'main function';
     }
 
     //werkt

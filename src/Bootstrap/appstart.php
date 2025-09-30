@@ -17,7 +17,7 @@ try {
     $bootstrapper->initializeGlobals($root_dir);
     $database_info_collection = new DatabaseInfoCollection();
 
-    $bootstrapper->setupDatabaseConnections($database_info_collection);
+    $bootstrapper->setupDatabaseWrappers($database_info_collection);
     $bootstrapper->setupControllers();
     $bootstrapper->setupRouter();
 
@@ -27,5 +27,9 @@ try {
 } catch (\Exception $e) {
     echo "<pre>";
     var_dump($e);
+    echo "</pre>";
+} catch (\Throwable $throwable) {
+    echo "<pre>";
+    var_dump($throwable);
     echo "</pre>";
 }
