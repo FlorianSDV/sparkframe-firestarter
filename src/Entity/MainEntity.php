@@ -8,9 +8,4 @@ use Sparkframe\Entity\Entity;
 
 class MainEntity extends Entity
 {
-
-    public static function getColumnDescriptions(): array
-    {
-        return [];
-    }
 }
