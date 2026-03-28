@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\NoteEntity;
 use App\Model\NotesModel;
 use Exception;
 use Sparkframe\Attributes\Route;
@@ -18,7 +17,6 @@ class NotesController extends Controller
     public function __construct()
     {
         $this->notesModel = new NotesModel();
-        //todo: misschien magic method die na __construct runt?
         parent::__construct();
     }
 
@@ -27,51 +25,51 @@ class NotesController extends Controller
      */
     #[Route('/notes/get-all', RequestMethod::GET)]
     #[Route('/notes', RequestMethod::GET)]
-    public function getAllNotes(): string
+    public function getAllNotes(): void
     {
-        return json_encode($this->notesModel->getAllNotes());
+        $notes = $this->notesModel->getAllNotes();
+        echo json_encode($notes);
     }
-
 
     /**
      * @throws Exception
      */
     #[Route('/notes/get/' . INT_ROUTE_PROPERTY, RequestMethod::GET)]
-    public function getNote(int $id): string
+    public function getNote(int $id): void
     {
         $note = $this->notesModel->getNote($id);
-        return json_encode($note);
+        echo json_encode($note);
     }
 
     /**
      * @throws Exception
      */
     #[Route('/notes/create', RequestMethod::POST)]
-    public function createNote(): string
+    public function createNote(): void
     {
         $request_body = json_decode($this->request->getRequestBody(), true);
         $note = $this->notesModel->createNote($request_body);
-        return json_encode(["status" => 'Success!', "note" => $note]);
+        echo json_encode(["status" => 'Success!', "note" => $note]);
     }
 
     /**
      * @throws Exception
      */
     #[Route('/notes/update', RequestMethod::PATCH)]
-    public function updateNote(): string
+    public function updateNote(): void
     {
         $request_body = json_decode($this->request->getRequestBody(), true);
         $note = $this->notesModel->getNote($request_body['id']);
         $note->text = $request_body['text'];
         $this->notesModel->updateNote($note);
-        return json_encode(["status" => "Success!", "note" => $note]);
+        echo json_encode(["status" => "Success!", "note" => $note]);
     }
 
     #[Route('/notes/delete/' . INT_ROUTE_PROPERTY, RequestMethod::DELETE)]
-    public function deleteNote(int $id): string
+    public function deleteNote(int $id): void
     {
         $note = $this->notesModel->getNote($id);
         $this->notesModel->deleteNote($note);
-        return json_encode(["status" => "success"]);
+        echo json_encode(["status" => "success"]);
     }
 }
