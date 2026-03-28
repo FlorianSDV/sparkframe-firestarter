@@ -6,8 +6,9 @@ namespace App\Model;
 
 use App\Entity\NoteEntity;
 use Exception;
+use Sparkframe\Model\Model;
 
-class NotesModel extends BaseModel
+class NotesModel extends Model
 {
     protected const string TABLE_NAME = 'Notes';
 

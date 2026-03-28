@@ -8,9 +8,10 @@ use App\Entity\NoteEntity;
 use App\Model\NotesModel;
 use Exception;
 use Sparkframe\Attributes\Route;
+use Sparkframe\Controller\Controller;
 use Sparkframe\Tools\RequestMethod;
 
-class NotesController extends BaseController
+class NotesController extends Controller
 {
     private NotesModel $notesModel;
 

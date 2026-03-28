@@ -6,9 +6,10 @@ namespace App\Controller;
 
 use App\Model\MainModel;
 use Sparkframe\Attributes\Route;
+use Sparkframe\Controller\Controller;
 use Sparkframe\Tools\RequestMethod;
 
-class MainController extends BaseController
+class MainController extends Controller
 {
     public function __construct()
     {

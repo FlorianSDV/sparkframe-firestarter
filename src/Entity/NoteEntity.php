@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-class NoteEntity extends BaseEntity
+use Sparkframe\Entity\Entity;
+
+class NoteEntity extends Entity
 {
     public const string ID = 'id';
     public const string TEXT = 'text';
