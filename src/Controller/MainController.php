@@ -16,10 +16,9 @@ class MainController extends Controller
         parent::__construct(new MainModel());
     }
 
-    //werkt
     #[Route('/', RequestMethod::GET)]
-    public function index(): string
+    public function index(): void
     {
-        return 'index!';
+        $this->render('index');
     }
 }
