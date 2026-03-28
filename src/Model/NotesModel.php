@@ -6,18 +6,16 @@ namespace App\Model;
 
 use App\Entity\NoteEntity;
 use Exception;
+use Sparkframe\Model\Model;
 
-class NotesModel extends BaseModel
+class NotesModel extends Model
 {
     protected const string TABLE_NAME = 'Notes';
 
     public function __construct()
     {
-        // todo: je wil waarschijnlijk geen class instantie maar de class naam.
-        parent::__construct(NoteEntity::class, 'MySQL');
-        // parent::__construct(NoteEntity::class, 'Default');
+        parent::__construct(NoteEntity::class, 'SqLite');
     }
-
 
     /**
      * @throws Exception
@@ -27,7 +25,6 @@ class NotesModel extends BaseModel
     {
         $query = $this->selectQuery()
             ->select(NoteEntity::ID, NoteEntity::TEXT);
-        //            ->limit(1);
 
         return $query->execute();
     }
@@ -38,7 +35,7 @@ class NotesModel extends BaseModel
     public function getNote(int $note_id): NoteEntity
     {
         $query = $this->selectQuery()
-            ->where([NoteEntity::ID => $note_id]);
+            ->where([NoteEntity::ID . ' = ' => $note_id]);
 
         return $query->execute()[0];
     }
@@ -48,12 +45,8 @@ class NotesModel extends BaseModel
      */
     public function createNote(array $note_data): NoteEntity
     {
-        // Note moet een is_new state hebben.
         $new_note = new NoteEntity();
         $new_note->text = $note_data['text'];
-
-        // addEntity moet een enkele entity of een hele reeks entities accepteren of een array van entities.
-        // Voor nu is het een enkele entity.
         $this->insertQuery()
             ->addEntity($new_note)
             ->execute();
@@ -66,16 +59,17 @@ class NotesModel extends BaseModel
      */
     public function updateNote(NoteEntity $note): NoteEntity
     {
-        $this->updateQuery()->addEntity($note)->execute();
+        $this->updateQuery()
+            ->addEntity($note)
+            ->execute();
 
         return $note;
     }
 
     public function deleteNote(NoteEntity $note): void
     {
-        $delete_query = $this->deleteQuery();
-        $delete_query->addEntity($note);
-
-        $delete_query->execute();
+        $this->deleteQuery()
+            ->addEntity($note)
+            ->execute();
     }
 }
