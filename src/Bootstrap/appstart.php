@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Bootstrap;
 
-//todo: misschien globals voor het pad?
-//todo: een class die alle nodige paden required.
-
 use Sparkframe\Request\RequestHandler;
 
 require __DIR__ . '/../../vendor/autoload.php';
@@ -13,22 +10,25 @@ require __DIR__ . '/../../vendor/autoload.php';
 try {
     $root_dir = dirname(__DIR__, 2);
     $bootstrapper = Bootstrapper::getInstance();
-
+    
     $bootstrapper->initializeGlobals($root_dir);
     $database_info_collection = new DatabaseInfoCollection();
+    $bootstrapper->bootstrap($database_info_collection);
 
-    $bootstrapper->setupDatabaseWrappers($database_info_collection);
-    $bootstrapper->setupControllers();
-    $bootstrapper->setupRouter();
+    $bootstrapper->startSession();
 
     $requestHandler = new RequestHandler();
 
-    echo $requestHandler->handle();
+    $requestHandler->handle();
 } catch (\Exception $e) {
+    // Add here your own error handling. 
+    // Don't show error messages in production environments.
     echo "<pre>";
     var_dump($e);
     echo "</pre>";
 } catch (\Throwable $throwable) {
+    // Add here your own error handling. 
+    // Don't show error messages in production environments.
     echo "<pre>";
     var_dump($throwable);
     echo "</pre>";
