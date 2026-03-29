@@ -20,7 +20,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:FlorianSDV/Sparkframe.git"
+      "url": "https://github.com/FlorianSDV/Sparkframe.git"
     }
   ]
 }
