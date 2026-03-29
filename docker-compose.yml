@@ -1,0 +1,14 @@
+services:
+  sparkframe-firestarter:
+    build:
+      context: .
+      secrets: [composer_auth]
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/srv/app
+    command: php -S 0.0.0.0:8000 -t public/
+      
+secrets:
+  composer_auth:
+    file: ${COMPOSER_AUTH_PATH}

@@ -1,0 +1,8 @@
+.vscode/
+.zed/
+vendor/
+.env.example
+.gitignore
+docker-compose.yml
+Dockerfile
+Makefile
