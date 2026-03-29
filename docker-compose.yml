@@ -1,5 +1,7 @@
 services:
   sparkframe-firestarter:
+    image: sparkframe-firestarter:latest
+    container_name: sparkframe-firestarter-app
     build:
       context: .
       secrets: [composer_auth]
