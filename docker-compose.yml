@@ -6,10 +6,9 @@ services:
       context: .
       secrets: [composer_auth]
     ports:
-      - 8000:8000
+      - 8000:80
     volumes:
-      - ./:/srv/app
-    command: php -S 0.0.0.0:8000 -t public/
+      - ./:/var/www/html
       
 secrets:
   composer_auth:
