@@ -1,15 +1,16 @@
 services:
   sparkframe-firestarter:
-    image: sparkframe-firestarter:latest
-    container_name: sparkframe-firestarter-app
+    image: sparkframe-firestarter:production
+    container_name: sparkframe-firestarter-app-production
     build:
       context: .
       secrets: [composer_auth]
+      target: production
     ports:
       - 8000:80
     volumes:
       - ./:/var/www/html
-      
+
 secrets:
   composer_auth:
     file: ${COMPOSER_AUTH_PATH}

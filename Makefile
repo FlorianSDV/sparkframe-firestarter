@@ -1,8 +1,15 @@
 COMPOSE_FILE=docker-compose.yml
+COMPOSE_FILE_DEV=docker-compose-dev.yml
 
 compose-up:
 	docker compose \
 		-f $(COMPOSE_FILE) \
+		up -d
+
+compose-up-dev:
+	docker compose \
+		-f $(COMPOSE_FILE) \
+		-f $(COMPOSE_FILE_DEV) \
 		up -d
 
 migrate:

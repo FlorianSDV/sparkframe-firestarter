@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
-FROM php:8.5.5RC1-apache-bookworm
+FROM php:8.5.5RC1-apache-bookworm AS base
 
 RUN apt update \
-    && apt install zip unzip -y
+    && apt install zip -y
 
 WORKDIR /var/www/html
 
@@ -20,6 +20,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 # Copy the composer.json and composer.lock files
 COPY composer.* .
 
+FROM base as production
+
 # Install the prod dependencies by allowing Docker to use the auth.json file of the host
 RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-dev --no-scripts --no-autoloader --no-progress --no-interaction
 
@@ -27,3 +29,17 @@ COPY . .
 
 # Dump the autoloader
 RUN composer dump-autoload --classmap-authoritative --no-dev
+
+FROM base as dev
+
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN install-php-extensions xdebug
+
+# Install the prod dependencies by allowing Docker to use the auth.json file of the host
+RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-scripts --no-autoloader --no-progress --no-interaction
+
+COPY . .
+
+# Dump the autoloader
+RUN composer dump-autoload --classmap-authoritative
