@@ -20,5 +20,6 @@
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {}
-	}
+	},
+	"postCreateCommand": "git config --global --add safe.directory /var/www/html"
 }
