@@ -32,6 +32,9 @@ RUN composer dump-autoload --classmap-authoritative --no-dev
 
 FROM base as dev
 
+# openssh-client is needed to use git to push to GitHub
+RUN apt install openssh-client -y
+
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN install-php-extensions xdebug
