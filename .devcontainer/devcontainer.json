@@ -1,0 +1,24 @@
+{
+	"name": "Firestarter devcontainer",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"../docker-compose-dev.yml"
+	],
+	"service": "sparkframe-firestarter",
+	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/var/www/html",
+	"workspaceFolder": "/var/www/html",
+	"forwardPorts": [
+		8000,
+		9003
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"xdebug.php-debug"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	}
+}
