@@ -16,7 +16,7 @@ migrate:
 	docker run -ti --rm \
 		-v $(PWD):/apps \
 		-w /apps/sqlite_db \
-		alpine/sqlite notes-app.db ".read migrate.sql" \
+		alpine/sqlite notes-app.sqlite ".read migrate.sql" \
 		&& cd sqlite_db/ \
 		&& sudo chmod o=rw notes-app.db
 

@@ -2,4 +2,4 @@
 .env
 .idea
 composer.lock
-notes-app.db
+notes-app.sqlite
