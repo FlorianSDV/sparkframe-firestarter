@@ -8,7 +8,6 @@ compose-up:
 
 compose-up-dev:
 	docker compose \
-		-f $(COMPOSE_FILE) \
 		-f $(COMPOSE_FILE_DEV) \
 		up -d
 
