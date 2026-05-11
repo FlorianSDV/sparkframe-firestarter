@@ -1,10 +1,9 @@
 {
 	"name": "Firestarter devcontainer",
 	"dockerComposeFile": [
-		"../docker-compose.yml",
 		"../docker-compose-dev.yml"
 	],
-	"service": "sparkframe-firestarter",
+	"service": "sparkframe-firestarter-dev",
 	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/var/www/html",
 	"workspaceFolder": "/var/www/html",
 	"forwardPorts": [
