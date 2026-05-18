@@ -14,7 +14,6 @@ services:
       - ./src:/var/www/html/src
       - ./.env:/var/www/html/.env
       - ./composer.json:/var/www/html/composer.json
-      - ./composer.lock:/var/www/html/composer.lock
 
 secrets:
   composer_auth:

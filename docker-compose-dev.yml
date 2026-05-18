@@ -14,7 +14,6 @@ services:
       - ./src:/var/www/html/src
       - ./.env:/var/www/html/.env
       - ./composer.json:/var/www/html/composer.json
-      - ./composer.lock:/var/www/html/composer.lock
     environment:
       XDEBUG_MODE: debug,develop
       XDEBUG_CONFIG: client_port=${XDEBUG_HOST_PORT} start_with_request=yes idekey=VSCODE
