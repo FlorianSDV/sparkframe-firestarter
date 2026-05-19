@@ -11,14 +11,15 @@ compose-up-dev:
 		-f $(COMPOSE_FILE_DEV) \
 		up -d
 
-migrate:
-	docker run -ti --rm \
-		-v $(PWD):/apps \
-		-w /apps/sqlite_db \
-		alpine/sqlite notes-app.sqlite ".read migrate.sql" \
-		&& cd sqlite_db/ \
-		&& sudo chmod o=rw notes-app.db
+create-sqlite-db:
+	docker exec \
+	sparkframe-firestarter-app-production \
+	composer create-sqlite-db
 
 create-stack:
 	make compose-up \
-		&& make migrate
+		&& make create-sqlite-db
+
+create-stack-dev:
+	make compose-up-dev \
+		&& make create-sqlite-db
