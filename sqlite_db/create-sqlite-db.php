@@ -1,6 +1,7 @@
 <?php
 
-$db_path = 'sqlite_db/notes-app.sqlite';
+$db_directory = 'sqlite_db';
+$db_path = $db_directory . '/notes-app.sqlite';
 
 if (file_exists($db_path)) {
     print('Sqlite database already exists. Terminating now...' . PHP_EOL);
@@ -28,6 +29,8 @@ echo("Notes count: $notes_count\n");
 // Close the connection
 $db->close();
 
-chown($db_path, 'www-data');
+chown($db_directory, 'www-data');
+
+chgrp($db_directory, 'www-data');
 
 chmod($db_path, 0600);
