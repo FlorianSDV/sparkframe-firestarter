@@ -33,4 +33,8 @@ chown($db_directory, 'www-data');
 
 chgrp($db_directory, 'www-data');
 
+chown($db_path, 'www-data');
+
+chgrp($db_path, 'www-data');
+
 chmod($db_path, 0600);
