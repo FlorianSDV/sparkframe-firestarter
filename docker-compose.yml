@@ -14,6 +14,8 @@ services:
       - ./src:/var/www/html/src
       - ./.env:/var/www/html/.env
       - ./composer.json:/var/www/html/composer.json
+      - ./LICENSE:/var/www/html/LICENSE
+      - ./Readme.md:/var/www/html/Readme.md
 
 secrets:
   composer_auth:
