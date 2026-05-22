@@ -1,0 +1,13 @@
+.cursor/
+.devcontainer/
+.vscode/
+.zed/
+vendor/
+.dockerignore
+.env
+.env.example
+.gitignore
+docker-compose-dev.yml
+docker-compose.yml
+Dockerfile
+Makefile

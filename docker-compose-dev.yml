@@ -1,0 +1,23 @@
+services:
+  sparkframe-firestarter-dev:
+    image: sparkframe-firestarter:dev
+    container_name: sparkframe-firestarter-app-dev
+    build:
+      context: .
+      secrets: [composer_auth]
+      target: dev
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/html
+      - vendor:/var/www/html/vendor
+    environment:
+      XDEBUG_MODE: debug,develop
+      XDEBUG_CONFIG: client_port=${XDEBUG_HOST_PORT} start_with_request=yes idekey=VSCODE
+
+secrets:
+  composer_auth:
+    file: ${COMPOSER_AUTH_PATH}
+
+volumes:
+  vendor:

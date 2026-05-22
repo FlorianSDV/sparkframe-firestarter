@@ -1,0 +1,20 @@
+services:
+  sparkframe-firestarter:
+    image: sparkframe-firestarter:production
+    container_name: sparkframe-firestarter-app-production
+    build:
+      context: .
+      secrets: [composer_auth]
+      target: production
+    ports:
+      - 8001:80
+    volumes:
+      - ./public:/var/www/html/public
+      - ./sqlite_db:/var/www/html/sqlite_db
+      - ./src:/var/www/html/src
+      - ./.env:/var/www/html/.env
+      - ./composer.json:/var/www/html/composer.json
+
+secrets:
+  composer_auth:
+    file: ${COMPOSER_AUTH_PATH}
