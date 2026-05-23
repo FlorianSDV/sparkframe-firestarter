@@ -13,7 +13,7 @@ class DatabaseInfoCollection extends BaseDatabaseInfoCollection
     {
         $this->database_info_collection = [
             "SqLite" => new DatabaseInfo(
-                getenv("DB_URL_SQLITE"),
+                $_ENV["DB_URL_SQLITE"],
                 "root",
                 ""
             )
