@@ -16,6 +16,11 @@ create-sqlite-db:
 	sparkframe-firestarter-app-production \
 	composer create-sqlite-db
 
+create-mysql-db:
+	docker exec \
+	sparkframe-firestarter-app-production \
+	composer create-mysql-db
+
 create-stack:
 	make compose-up \
 		&& make create-sqlite-db

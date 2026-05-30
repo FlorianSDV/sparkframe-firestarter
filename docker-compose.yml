@@ -11,6 +11,7 @@ services:
     volumes:
       - ./public:/var/www/html/public
       - ./sqlite_db:/var/www/html/sqlite_db
+      - ./MySql:/var/www/html/MySql
       - ./src:/var/www/html/src
       - ./.env:/var/www/html/.env
       - ./composer.json:/var/www/html/composer.json

@@ -26,6 +26,9 @@
   "scripts": {
     "create-sqlite-db": [
       "php sqlite_db/create-sqlite-db.php"
+    ],
+    "create-mysql-db": [
+      "php MySql/create-mysql-db.php"
     ]
   }
 }
