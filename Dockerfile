@@ -22,6 +22,10 @@ COPY composer.* .
 
 FROM base as production
 
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN install-php-extensions pdo_mysql
+
 # Install the prod dependencies by allowing Docker to use the auth.json file of the host
 RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-dev --no-scripts --no-autoloader --no-progress --no-interaction
 
@@ -37,7 +41,7 @@ RUN apt install openssh-client -y
 
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-RUN install-php-extensions xdebug
+RUN install-php-extensions xdebug pdo_mysql
 
 # Install the prod dependencies by allowing Docker to use the auth.json file of the host
 RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-scripts --no-autoloader --no-progress --no-interaction

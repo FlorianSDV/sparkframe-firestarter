@@ -14,7 +14,9 @@ class NotesModel extends Model
 
     public function __construct()
     {
-        parent::__construct(NoteEntity::class, 'SqLite');
+        // Switch between SQLite and MySQL by commenting and uncommenting the correct line
+        // parent::__construct(NoteEntity::class, 'SqLite');
+        parent::__construct(NoteEntity::class, 'MySQL');
     }
 
     /**
