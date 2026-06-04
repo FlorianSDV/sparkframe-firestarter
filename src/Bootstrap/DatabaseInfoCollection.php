@@ -16,6 +16,11 @@ class DatabaseInfoCollection extends BaseDatabaseInfoCollection
                 $_ENV["DB_URL_SQLITE"],
                 "root",
                 ""
+            ),
+            "MySQL" => new DatabaseInfo(
+                $_ENV["DB_URL_MYSQL"],
+                $_ENV["MYSQL_USER"],
+                $_ENV["MYSQL_ROOT_PASSWORD"]
             )
         ];
     }
