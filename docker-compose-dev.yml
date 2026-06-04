@@ -19,7 +19,7 @@ services:
     container_name: mysql-db-notes
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: notes-app
+      MYSQL_DATABASE: notes_app
     ports:
       - 3306:3306
     volumes:
