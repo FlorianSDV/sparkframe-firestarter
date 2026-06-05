@@ -6,10 +6,9 @@ namespace App\Controller;
 
 use App\Model\MainModel;
 use Sparkframe\Attributes\Route;
-use Sparkframe\Controller\Controller;
 use Sparkframe\Tools\RequestMethod;
 
-class MainController extends Controller
+class MainController extends BaseController
 {
     public function __construct()
     {
@@ -19,6 +18,6 @@ class MainController extends Controller
     #[Route('/', RequestMethod::GET)]
     public function index(): void
     {
-        $this->render('index');
+        $this->renderPage('index', [], 'Sparkframe Firestarter', 'home');
     }
 }
