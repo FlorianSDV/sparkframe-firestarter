@@ -13,7 +13,7 @@ namespace App\View\partials;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
+    <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -25,10 +25,10 @@ namespace App\View\partials;
         </ul>
         <ul>
             <li>
-                <a href="/"<?php echo $activeNav === 'home' ? ' aria-current="page"' : ''; ?>>Home</a>
+                <a href="/"<?= $activeNav === 'home' ? ' aria-current="page"' : ''; ?>>Home</a>
             </li>
             <li>
-                <a href="/notes"<?php echo $activeNav === 'notes' ? ' aria-current="page"' : ''; ?>>Notes</a>
+                <a href="/notes"<?= $activeNav === 'notes' ? ' aria-current="page"' : ''; ?>>Notes</a>
             </li>
         </ul>
     </nav>

@@ -15,7 +15,7 @@ namespace App\View\notes;
         <p>No notes yet. <a href="/notes/create">Create one</a>.</p>
     </article>
 <?php else: ?>
-    <p><?php echo count($notes); ?> note<?php echo count($notes) === 1 ? '' : 's'; ?> found.</p>
+    <p><?= count($notes); ?> note<?= count($notes) === 1 ? '' : 's'; ?> found.</p>
     <ul class="notes-list">
         <li class="notes-list-header">
             <span class="notes-id">ID</span>
@@ -23,9 +23,9 @@ namespace App\View\notes;
         </li>
         <?php foreach ($notes as $note): ?>
             <li>
-                <a href="/notes/get/<?php echo $note->id; ?>">
-                    <span class="notes-id"><?php echo $note->id; ?></span>
-                    <span class="notes-text"><?php echo htmlspecialchars($note->text, ENT_QUOTES, 'UTF-8'); ?></span>
+                <a href="/notes/get/<?= $note->id; ?>">
+                    <span class="notes-id"><?= $note->id; ?></span>
+                    <span class="notes-text"><?= htmlspecialchars($note->text, ENT_QUOTES, 'UTF-8'); ?></span>
                 </a>
             </li>
         <?php endforeach; ?>
