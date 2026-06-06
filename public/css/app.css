@@ -1,0 +1,57 @@
+nav a[aria-current="page"] {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--pico-muted-border-color);
+    text-align: center;
+}
+
+.notes-list,
+.notes-list li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.notes-list {
+    padding: 0;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+.notes-list li::marker {
+    content: none;
+}
+
+.notes-list li {
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.notes-list-header,
+.notes-list a {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+}
+
+.notes-list-header {
+    font-weight: bold;
+}
+
+.notes-list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.notes-list a:hover {
+    background: var(--pico-card-background-color);
+}
+
+.notes-id {
+    font-weight: bold;
+}
