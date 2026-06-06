@@ -55,3 +55,35 @@ footer {
 .notes-id {
     font-weight: bold;
 }
+
+.http-method {
+    display: inline-block;
+    min-width: 4.5rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-align: center;
+    color: #fff;
+}
+
+.http-method--get {
+    background-color: #16a34a;
+}
+
+.http-method--post {
+    background-color: #ca8a04;
+    color: #1a1a1a;
+}
+
+.http-method--put {
+    background-color: #2563eb;
+}
+
+.http-method--patch {
+    background-color: #9333ea;
+}
+
+.http-method--delete {
+    background-color: #dc2626;
+}
