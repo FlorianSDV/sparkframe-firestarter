@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\View;
 
+use Sparkframe\Tools\MethodRoute;
+
+/** @var array $sorted_routes */
 ?>
 <h1>Sparkframe Firestarter</h1>
 <p>
@@ -20,13 +23,23 @@ namespace App\View;
 </section>
 
 <section>
-    <h2>API endpoints</h2>
+    <h2>Endpoints</h2>
+
     <ul>
-        <li><code>GET /notes</code> — list notes (HTML)</li>
-        <li><code>GET /notes/get/{id}</code> — view a single note</li>
-        <li><code>POST /notes/create</code> — create a note</li>
-        <li><code>POST /notes/update</code> — update a note</li>
-        <li><code>POST /notes/delete/{id}</code> — delete a note</li>
+        <?php
+        foreach ($sorted_routes as $method_route_array) {
+            /** 
+             * @var MethodRoute $method_route 
+             */
+            $method_route = $method_route_array['method_route'];
+            $uri = $method_route->getUriString();
+            $controller = $method_route->getController();
+            $method = $method_route->getMethodName();
+            $request_method = $method_route_array['request_method'];
+            $methodClass = strtolower((string) $request_method);
+            echo '<li><code><span class="http-method http-method--' . $methodClass . '">' . $request_method . '</span> ' . $uri . '</code> — ' . $controller . '::' . $method . '()</li>';
+        }
+        ?>
     </ul>
 </section>
 
