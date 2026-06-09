@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:9.5.0
+    container_name: mysql-db-notes
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: notes_app
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-db-notes-volume:/var/lib/mysql
+
+volumes:
+  mysql-db-notes-volume:
