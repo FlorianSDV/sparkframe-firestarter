@@ -67,15 +67,15 @@ cp .env.local.example .env
 ```shell
 composer install
 ```
-3. There is a make command that lets you spin up a containerized MySql database
+3. Run the make command that lets you spin up a containerized MySql database
 ```shell
 make start-mysql-db-container
 ```
-4. Then, when the container is created, create the mysql database and seed the tables.
+4. When the container is created, create the mysql database and seed the tables.
 ```shell
 composer create-mysql-db
 ```
-5. Then, create the sqlite database.
+5. Create the sqlite database.
 ```shell
 composer create-sqlite-db
 ```
@@ -83,7 +83,7 @@ composer create-sqlite-db
 ```shell
 php -S localhost:8000 -t public/
 ```
-7. Open a browser and navigate to 
+7. Open a browser and navigate to http://localhost:8000/
 
 # When you want to run everything locally
 Ensure that you have the correct php extensions installed to be able to run mysql and sqlite.
@@ -114,3 +114,4 @@ composer create-sqlite-db
 ```shell
 php -S localhost:8000 -t public/
 ```
+7. Open a browser and navigate to http://localhost:8000/
