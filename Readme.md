@@ -59,7 +59,7 @@ Ensure that you have the correct php extensions installed to be able to run mysq
 - sqlite3
 
 
-1. Create the .env file. There is no need to change any of the values
+1. Create the .env file. There is no need to change any of the values yet.
 ```shell
 cp .env.local.example .env
 ```
@@ -79,11 +79,12 @@ composer create-mysql-db
 ```shell
 composer create-sqlite-db
 ```
-6. Finally, run the application using PHP's built in server.
+6. In .env add the absolute path of notes-app.sqlite (located in the sqlite_db directory) to the DB_URL_SQLITE environment variable.
+7. Finally, run the application using PHP's built in server.
 ```shell
 php -S localhost:8000 -t public/
 ```
-7. Open a browser and navigate to http://localhost:8000/
+8. Open a browser and navigate to http://localhost:8000/
 
 # When you want to run everything locally
 Ensure that you have the correct php extensions installed to be able to run mysql and sqlite.
@@ -110,8 +111,9 @@ composer create-mysql-db
 ```shell
 composer create-sqlite-db
 ```
-6. Finally, run the application using PHP's built in server.
+6. In .env add the absolute path of notes-app.sqlite (located in the sqlite_db directory) to the DB_URL_SQLITE environment variable.
+7. Finally, run the application using PHP's built in server.
 ```shell
 php -S localhost:8000 -t public/
 ```
-7. Open a browser and navigate to http://localhost:8000/
+8. Open a browser and navigate to http://localhost:8000/
