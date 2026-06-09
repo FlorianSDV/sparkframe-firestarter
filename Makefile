@@ -1,5 +1,6 @@
 COMPOSE_FILE=docker-compose.yml
 COMPOSE_FILE_DEV=docker-compose-dev.yml
+COMPOSE_FILE_MYSQL=docker-compose-mysql.yml
 
 compose-up:
 	docker compose \
@@ -26,6 +27,11 @@ create-mysql-db:
 	docker exec \
 	sparkframe-firestarter-app-production \
 	composer create-mysql-db
+
+start-mysql-db-container:
+	docker compose \
+	-f $(COMPOSE_FILE_MYSQL) \
+	up -d
 
 create-stack:
 	make compose-up \
