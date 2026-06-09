@@ -83,3 +83,34 @@ composer create-sqlite-db
 ```shell
 php -S localhost:8000 -t public/
 ```
+7. Open a browser and navigate to 
+
+# When you want to run everything locally
+Ensure that you have the correct php extensions installed to be able to run mysql and sqlite.
+- pdo_mysql
+- pdo_sqlite
+- sqlite3
+
+1. Because you are not using the provided mysql container you need to host MySql yourself. Do this first before continuing.
+- There is no need to create the database, it will be created in a later step.
+
+2. Create the .env file. Change the MySql variables if necessary.
+```shell
+cp .env.local.example .env
+```
+3. Install the dependencies:
+```shell
+composer install
+```
+4. Create the mysql database and seed the tables.
+```shell
+composer create-mysql-db
+```
+5. Create the sqlite database.
+```shell
+composer create-sqlite-db
+```
+6. Finally, run the application using PHP's built in server.
+```shell
+php -S localhost:8000 -t public/
+```
