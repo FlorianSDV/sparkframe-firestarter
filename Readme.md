@@ -80,33 +80,20 @@ Ensure that you have the correct php extensions installed to be able to run mysq
 - pdo_sqlite
 - sqlite3
 
-
 1. Create the .env file. There is no need to change any of the values yet.
 ```shell
 cp .env.local.example .env
 ```
-2. Install the dependencies:
+2. Install the dependencies, create and seed the databases
 ```shell
-composer install
+make create-local-stack
 ```
-3. Run the make command that lets you spin up a containerized MySql database
-```shell
-make start-mysql-db-container
-```
-4. When the container is created, create the mysql database and seed the tables.
-```shell
-composer create-mysql-db
-```
-5. Create the sqlite database.
-```shell
-composer create-sqlite-db
-```
-6. In .env add the absolute path of notes-app.sqlite (located in the sqlite_db directory) to the DB_URL_SQLITE environment variable.
-7. Finally, run the application using PHP's built in server.
+3. In .env add the absolute path of notes-app.sqlite (located in the sqlite_db directory) to the DB_URL_SQLITE environment variable.
+4. Finally, run the application using PHP's built in server.
 ```shell
 php -S localhost:8000 -t public/
 ```
-8. Open a browser and navigate to http://localhost:8000/
+5. Open a browser and navigate to http://localhost:8000/
 
 # When you want to run everything locally
 Ensure that you have the correct php extensions installed to be able to run mysql and sqlite.
@@ -139,3 +126,10 @@ composer create-sqlite-db
 php -S localhost:8000 -t public/
 ```
 8. Open a browser and navigate to http://localhost:8000/
+
+# Stopping the containers
+```shell
+make stop-mysql-container
+make stop-dev-container
+make stop-production-container
+```
