@@ -2,8 +2,6 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use PDOException;
-use RuntimeException;
 use App\Bootstrap\DatabaseInfoCollection;
 use App\Entity\NoteEntity;
 use Sparkframe\Bootstrap\Globals;
