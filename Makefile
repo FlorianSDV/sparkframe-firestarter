@@ -2,13 +2,28 @@ COMPOSE_FILE=docker-compose.yml
 COMPOSE_FILE_DEV=docker-compose-dev.yml
 COMPOSE_FILE_MYSQL=docker-compose-mysql.yml
 
+# General
+stop-mysql-container:
+	docker compose \
+	-f $(COMPOSE_FILE_MYSQL) \
+	down
+
+stop-dev-container:
+	docker compose \
+	-f $(COMPOSE_FILE_DEV) \
+	down
+
+stop-production-container:
+	docker compose \
+	-f $(COMPOSE_FILE) \
+	down
+
 # production
 create-stack:
 	make compose-up \
 		&& make create-sqlite-db \
 		&& make create-mysql-db
 
-# Als de stack bestaat dan volstaat deze
 compose-up:
 	docker compose \
 		-f $(COMPOSE_FILE) \
@@ -56,8 +71,13 @@ create-mysql-db-dev:
 		composer create-mysql-db
 
 # local - hybrid
+create-local-stack:
+	composer install \
+	&& make start-mysql-db-container \
+	&& composer create-mysql-db \
+	&& composer create-sqlite-db
+
 start-mysql-db-container:
 	docker compose \
 	-f $(COMPOSE_FILE_MYSQL) \
 	up -d
-# local
