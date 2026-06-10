@@ -9,26 +9,15 @@ services:
     ports:
       - 8001:80
     volumes:
-      - ./public:/var/www/html/public
-      - ./sqlite_db:/var/www/html/sqlite_db
-      - ./MySql:/var/www/html/MySql
-      - ./src:/var/www/html/src
-      - ./.env:/var/www/html/.env
-      - ./composer.json:/var/www/html/composer.json
-  db:
-    image: mysql:9.5.0
-    container_name: mysql-db-notes
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: notes_app
-    ports:
-      - 3306:3306
-    volumes:
-      - mysql-db-notes-volume:/var/lib/mysql
+      - .:/var/www/html
+      - vendor_prod:/var/www/html/vendor
+    depends_on:
+      db:
+        condition: service_healthy
 
 secrets:
   composer_auth:
     file: ${COMPOSER_AUTH_PATH}
 
 volumes:
-  mysql-db-notes-volume:
+  vendor_prod:
