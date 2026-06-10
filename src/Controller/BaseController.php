@@ -19,4 +19,12 @@ abstract class BaseController extends Controller
         $this->render($viewName, $data);
         $this->render('partials/footer', $layoutData);
     }
+
+    protected function redirect_404(): void
+    {
+        $this->renderPage(
+            viewName: '404',
+            title: 'Not found'
+        );
+    }
 }
