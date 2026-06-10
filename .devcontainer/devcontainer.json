@@ -1,7 +1,8 @@
 {
 	"name": "Firestarter devcontainer",
 	"dockerComposeFile": [
-		"../docker-compose-dev.yml"
+		"../docker-compose-dev.yml",
+		"../docker-compose-mysql.yml"
 	],
 	"service": "sparkframe-firestarter-dev",
 	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/var/www/html",
@@ -13,12 +14,14 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"xdebug.php-debug"
+				"xdebug.php-debug",
+				"bmewburn.vscode-intelephense-client",
+				"ikappas.composer"
 			]
 		}
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {}
 	},
-	"postCreateCommand": "git config --global --add safe.directory /var/www/html"
+	"postCreateCommand": "git config --global --add safe.directory /var/www/html && composer create-sqlite-db && composer create-mysql-db"
 }
