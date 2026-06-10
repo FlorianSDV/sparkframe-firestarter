@@ -9,23 +9,22 @@ If you want to [run everything locally](#when-you-want-to-run-everything-locally
 
 # When you want to use Docker:
 ## When using a devcontainer
-1. Create the .env file
+1. Create the `.env` file:
 ```shell
 cp .env.example .env
 ```
 
-2. Add the path to your auth.json file on your host to the newly created .env
+2. In `.env`, set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
 
 Make sure:
-- That the .env file is created before creating the devcontainer
+- That the `.env` file is created before creating the devcontainer
 - That you have the correct extension installed for your IDE
 
-1. Simply follow your IDE's instructions to create the devcontainer
-In vscode, you can use the "Dev Containers: Reopen in Container" command to create the devcontainer.
-2. After creating the devcontainer, create the database by running:
-```shell
-composer create-sqlite-db
-```
+3. Follow your IDE's instructions to create the devcontainer. In VS Code, use the "Dev Containers: Reopen in Container" command.
+
+On first build, SQLite and MySQL databases are created and seeded automatically.
+
+4. Open a browser and navigate to http://localhost:8000/
 
 ## Creating the production stack
 The production stack runs the PHP application and a MySQL container in Docker. SQLite and MySQL databases are created and seeded automatically.
@@ -52,17 +51,29 @@ make compose-up
 ```
 
 ## Creating the development stack
-1. Create the .env file
+The development stack runs the PHP application (with Xdebug) and a MySQL container in Docker. SQLite and MySQL databases are created and seeded automatically.
+
+1. Create the `.env` file:
 ```shell
 cp .env.example .env
 ```
 
-2. Add the path to your auth.json file on your host to the newly created .env
+2. In `.env`, set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
 
-- Create and start the development stack
+3. Create and start the development stack:
 ```shell
 make create-stack-dev
 ```
+
+This command builds and starts the app and MySQL containers, then creates and seeds both the SQLite and MySQL databases.
+
+4. Open a browser and navigate to http://localhost:8000/
+
+If the stack already exists and you only need to start the containers again:
+```shell
+make compose-up-dev
+```
+
 # When you don't want to use Docker, But you do want to run MySQL in a container
 Ensure that you have the correct php extensions installed to be able to run mysql and sqlite.
 - pdo_mysql

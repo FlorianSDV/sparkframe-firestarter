@@ -14,16 +14,9 @@ services:
     environment:
       XDEBUG_MODE: debug,develop
       XDEBUG_CONFIG: client_port=${XDEBUG_HOST_PORT} start_with_request=yes idekey=VSCODE
-  db:
-    image: mysql:9.5.0
-    container_name: mysql-db-notes
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: notes_app
-    ports:
-      - 3306:3306
-    volumes:
-      - mysql-db-notes-volume:/var/lib/mysql
+    depends_on:
+      db:
+        condition: service_healthy
 
 secrets:
   composer_auth:
@@ -31,4 +24,3 @@ secrets:
 
 volumes:
   vendor_dev:
-  mysql-db-notes-volume:
