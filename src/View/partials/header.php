@@ -30,6 +30,9 @@ namespace App\View\partials;
             <li>
                 <a href="/notes"<?= $activeNav === 'notes' ? ' aria-current="page"' : ''; ?>>Notes</a>
             </li>
+            <li>
+                <a href="/documentation"<?= $activeNav === 'documentation' ? ' aria-current="page"' : ''; ?>>Documentation</a>
+            </li>
         </ul>
     </nav>
 </header>

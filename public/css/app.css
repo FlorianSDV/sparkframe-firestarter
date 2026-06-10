@@ -1,4 +1,4 @@
-nav a[aria-current="page"] {
+header nav a[aria-current="page"] {
     font-weight: bold;
     text-decoration: underline;
 }
@@ -86,4 +86,79 @@ footer {
 
 .http-method--delete {
     background-color: #dc2626;
+}
+
+.documentation-layout {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .documentation-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.documentation-nav {
+    position: sticky;
+    top: 1rem;
+}
+
+.documentation-nav h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.documentation-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.documentation-nav li {
+    display: block;
+    margin: 0 0 0.35rem;
+    padding: 0;
+}
+
+.documentation-nav a {
+    display: block;
+    padding: 0.25rem 0;
+    text-decoration: none;
+}
+
+.documentation-nav a:hover {
+    text-decoration: underline;
+}
+
+.documentation-nav a[aria-current="page"] {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.documentation-content {
+    max-width: 48rem;
+    min-width: 0;
+}
+
+.documentation-content table {
+    display: block;
+    overflow-x: auto;
+}
+
+.documentation-content pre {
+    overflow-x: auto;
+}
+
+.documentation-content pre.mermaid,
+.documentation-content .mermaid {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.documentation-content .mermaid svg {
+    max-width: 100%;
 }
