@@ -5,7 +5,7 @@
 <p>An entity is a PHP class that maps to a database table. The query builder uses entity metadata to build SQL and hydrate query results into objects.</p>
 <h2>Base class</h2>
 <p>Extend <code>Sparkframe\Entity\Entity</code> and annotate your properties:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -31,21 +31,21 @@ class NoteEntity extends Entity
 <p>Properties <strong>without</strong> an attribute are ignored by the query builder. You can add computed or transient properties that are not stored in the database.</p>
 <h2>Column name constants</h2>
 <p>Define constants for column names and use them in your models:</p>
-<pre><code>public const string ID = 'id';
+<pre><code class="language-php">public const string ID = 'id';
 public const string TEXT = 'text';</code></pre>
 <p>This avoids typos in query builder calls:</p>
-<pre><code>-&gt;where([NoteEntity::ID . ' = ' =&gt; $note_id])
+<pre><code class="language-php">-&gt;where([NoteEntity::ID . ' = ' =&gt; $note_id])
 -&gt;select(NoteEntity::ID, NoteEntity::TEXT)</code></pre>
 <h2>Create a new entity</h2>
 <h3>Step 1 — Create the database table</h3>
 <p>Sparkframe has no migrations. Create the table with SQL or a setup script before using the entity.</p>
-<pre><code>CREATE TABLE Tags (
+<pre><code class="language-sql">CREATE TABLE Tags (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
 );</code></pre>
 <h3>Step 2 — Create the entity class</h3>
 <p>Create <code>src/Entity/TagEntity.php</code>:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -73,23 +73,23 @@ class TagEntity extends Entity
 <h2>How entities are used</h2>
 <h3>Hydration from SELECT queries</h3>
 <p>When you call <code>execute()</code> on a select query, each row becomes an entity instance:</p>
-<pre><code>/** @var NoteEntity[] */
+<pre><code class="language-php">/** @var NoteEntity[] */
 $notes = $this-&gt;selectQuery()-&gt;execute();</code></pre>
 <h3>Manual construction</h3>
 <p>Create an entity before inserting:</p>
-<pre><code>$new_note = new NoteEntity();
+<pre><code class="language-php">$new_note = new NoteEntity();
 $new_note-&gt;text = 'Hello world';</code></pre>
 <p>You do not need to set the primary key before insert; the database assigns it.</p>
 <h3>After INSERT</h3>
 <p>After a successful insert, the query builder calls <code>setId()</code> on the entity with the new <code>lastInsertId</code>:</p>
-<pre><code>$this-&gt;insertQuery()
+<pre><code class="language-php">$this-&gt;insertQuery()
     -&gt;addEntity($new_note)
     -&gt;execute();
 
 // $new_note-&gt;id is now set</code></pre>
 <h3>UPDATE and DELETE</h3>
 <p>Pass existing entities (with a primary key set) to update or delete builders:</p>
-<pre><code>$note-&gt;text = 'Updated text';
+<pre><code class="language-php">$note-&gt;text = 'Updated text';
 $this-&gt;updateQuery()-&gt;addEntity($note)-&gt;execute();
 
 $this-&gt;deleteQuery()-&gt;addEntity($note)-&gt;execute();</code></pre>
