@@ -2,7 +2,7 @@
     <?php require __DIR__ . '/_nav.php'; ?>
     <article class="documentation-content">
 <h1>Routing</h1>
-<p>Routes map URLs and HTTP methods to controller methods. You define them with PHP attributes — no separate route configuration file.</p>
+<p>Routes map URLs and HTTP methods to controller methods. You define them with PHP attributes — no separate route configuration file is needed.</p>
 <h2>Basic route</h2>
 <p>Add a <code>#[Route]</code> attribute above a controller method:</p>
 <pre><code class="language-php">use Sparkframe\Attributes\Route;

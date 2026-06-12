@@ -2,7 +2,7 @@
     <?php require __DIR__ . '/_nav.php'; ?>
     <article class="documentation-content">
 <h1>Views</h1>
-<p>Views are plain PHP files that render HTML. Sparkframe has no template engine — you write standard PHP with optional HTML.</p>
+<p>Views are plain PHP files that render HTML. Write standard PHP with optional markup — no separate template language to learn. Or, use a template engine like <a href="https://twig.symfony.com/">Twig</a> if you prefer.</p>
 <h2>Location and naming</h2>
 <p>Views live in <code>src/View/</code>. The path you pass to <code>render()</code> maps directly to a file:</p>
 <table><thead><tr><th><code>render()</code> argument</th><th>File path</th></tr></thead><tbody><tr><td><code>&#039;index&#039;</code></td><td><code>src/View/index.php</code></td></tr><tr><td><code>&#039;notes/index&#039;</code></td><td><code>src/View/notes/index.php</code></td></tr><tr><td><code>&#039;partials/header&#039;</code></td><td><code>src/View/partials/header.php</code></td></tr></tbody></table>
@@ -14,6 +14,7 @@
 
 declare(strict_types=1);
 
+/** Add your PHPDoc annotations here to help your IDE and future readers */
 /** @var list&lt;\App\Entity\NoteEntity&gt; $notes */
 
 ?&gt;
@@ -34,8 +35,7 @@ declare(strict_types=1);
 &lt;?php endif; ?&gt;</code></pre>
 <p>Add PHPDoc <code>@var</code> annotations to document which variables the view expects. This helps your IDE and future readers.</p>
 <h2>Partials and layout</h2>
-<p>Sparkframe does not include a layout system. You compose pages by calling <code>render()</code> multiple times.</p>
-<p>Firestarter uses <code>BaseController::renderPage()</code> to wrap every page with a header and footer:</p>
+<p>Compose pages by calling <code>render()</code> multiple times. Firestarter uses <code>BaseController::renderPage()</code> to wrap every page with a header and footer:</p>
 <pre><code class="language-php">$this-&gt;render('partials/header', $layoutData);
 $this-&gt;render($viewName, $data);
 $this-&gt;render('partials/footer', $layoutData);</code></pre>
@@ -45,7 +45,7 @@ $this-&gt;render('partials/footer', $layoutData);</code></pre>
 <pre><code class="language-php">&lt;?= htmlspecialchars($note-&gt;text, ENT_QUOTES, 'UTF-8'); ?&gt;</code></pre>
 <p>Without escaping, user input can lead to XSS vulnerabilities. Numeric IDs in URLs are generally safe, but text content is not.</p>
 <h2>Styling</h2>
-<p>Sparkframe does not include CSS or a design system. Firestarter uses <a href="https://picocss.com/">Pico CSS</a> via a CDN link in <code>partials/header.php</code> plus a custom <code>public/css/app.css</code>.</p>
+<p>Add your own styling as needed. Firestarter uses <a href="https://picocss.com/">Pico CSS</a> via a CDN link in <code>partials/header.php</code> plus a custom <code>public/css/app.css</code>. You are free to use any other styling library you prefer.</p>
 <p>Static assets go in <code>public/</code> and are served directly by the web server (they bypass the front controller).</p>
 <h2>Forms</h2>
 <p>HTML forms POST to routes defined on your controllers:</p>
@@ -56,7 +56,7 @@ $this-&gt;render('partials/footer', $layoutData);</code></pre>
 <p>Read submitted values in the controller:</p>
 <pre><code class="language-php">$post = $this-&gt;request-&gt;getRequestPost();
 $note = $this-&gt;notesModel-&gt;createNote($post);</code></pre>
-<p>Sparkframe does not include CSRF protection. Add tokens yourself if your application needs them.</p>
+<p>Add CSRF tokens to your forms when your application needs them.</p>
 <nav class="documentation-pager" aria-label="Page navigation">
     <a href="/documentation/models-and-query-builder" role="button" class="secondary">Previous</a>
     <span class="documentation-pager__topic documentation-pager__topic--prev">Models and query builder</span>

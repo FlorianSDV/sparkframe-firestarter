@@ -15,7 +15,7 @@ MYSQL_USER=root
 COMPOSER_AUTH_PATH=/path/to/auth.json
 XDEBUG_HOST_PORT=9003</code></pre>
 <table><thead><tr><th>Variable</th><th>Purpose</th></tr></thead><tbody><tr><td><code>DB_URL_SQLITE</code></td><td>PDO DSN for SQLite (path to the <code>.sqlite</code> file)</td></tr><tr><td><code>DB_URL_MYSQL</code></td><td>PDO DSN for MySQL (<code>host</code> and <code>dbname</code>)</td></tr><tr><td><code>MYSQL_USER</code></td><td>MySQL username</td></tr><tr><td><code>MYSQL_ROOT_PASSWORD</code></td><td>MySQL password</td></tr><tr><td><code>COMPOSER_AUTH_PATH</code></td><td>Path to Composer <code>auth.json</code> (Docker builds only)</td></tr><tr><td><code>XDEBUG_HOST_PORT</code></td><td>Xdebug port (development only)</td></tr></tbody></table>
-<p>Sparkframe does not validate that required variables exist. If a variable is missing, your app will fail when it tries to connect.</p>
+<p>Make sure every required variable is set in <code>.env</code>. If a variable is missing, your app will fail when it tries to connect.</p>
 <h2>Database connections</h2>
 <p>Create a class that extends <code>Sparkframe\Database\BaseDatabaseInfoCollection</code> and maps <strong>named</strong> databases to <code>DatabaseInfo</code> objects:</p>
 <pre><code class="language-php">&lt;?php
@@ -57,9 +57,9 @@ parent::__construct(NoteEntity::class, 'SqLite');
 parent::__construct(NoteEntity::class, 'MySQL');</code></pre>
 <p>Only one database is active per model instance. To use both in the same request, create separate model instances or switch the constructor argument.</p>
 <h2>Creating database tables</h2>
-<p>Sparkframe has no migration system. You create tables yourself:</p>
-<ul><li>Run SQL manually</li><li>Use a setup script invoked via Composer</li></ul>
-<p>Firestarter includes setup scripts as an <strong>application pattern</strong>, not a framework feature:</p>
+<p>Create your tables before using models. Two common approaches:</p>
+<ul><li>Run <code>CREATE TABLE</code> SQL directly against your database</li><li>Add a setup script and invoke it via Composer</li></ul>
+<p>Firestarter includes setup scripts you can copy and adapt:</p>
 <pre><code class="language-bash">composer create-sqlite-db   # Creates SQLite file and Notes table
 composer create-mysql-db    # Creates MySQL database and Notes table</code></pre>
 <p>These scripts live in <code>sqlite_db/</code> and <code>MySql/</code> in the firestarter project. Copy and adapt them for your own entities.</p>
