@@ -189,6 +189,12 @@ footer {
     border-top: 1px solid var(--pico-muted-border-color);
 }
 
+.documentation-pager > a[role="button"] {
+    flex: 0 0 auto;
+    min-width: 7rem;
+    text-align: center;
+}
+
 .documentation-pager__topic {
     flex: 1;
     min-width: 0;
