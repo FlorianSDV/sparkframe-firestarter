@@ -77,7 +77,7 @@ public function createNote(): void
 <p>Common patterns:</p>
 <ul><li><strong>GET</strong> — fetch data from the model, render a view</li><li><strong>POST</strong> — read form data, mutate via the model, redirect to avoid duplicate submissions</li></ul>
 <h2>Layout wrapper (app convention)</h2>
-<p><code>BaseController::renderPage()</code> is <strong>not</strong> part of Sparkframe. Firestarter adds it to render a header, the main view, and a footer in one call:</p>
+<p><code>BaseController::renderPage()</code> is a Firestarter convention that renders a header, the main view, and a footer in one call:</p>
 <pre><code class="language-php">protected function renderPage(
     string $viewName,
     array $data = [],
@@ -107,7 +107,7 @@ public function createNote(): void
     $note = $this-&gt;notesModel-&gt;createNote($request_body);
     echo json_encode(['status' =&gt; 'Success!', 'note' =&gt; $note]);
 }</code></pre>
-<p>Sparkframe does not include JSON helpers. Use <code>json_encode()</code> and <code>json_decode()</code> as needed. Set <code>Content-Type: application/json</code> in your response if required by your API consumers.</p>
+<p>Return JSON with PHP&#039;s built-in <code>json_encode()</code> and <code>json_decode()</code>. Set <code>Content-Type: application/json</code> in your response when your API consumers expect it.</p>
 <h2>Redirect after mutation</h2>
 <p>After creating, updating, or deleting data, redirect to a GET page:</p>
 <pre><code class="language-php">$this-&gt;redirect('/notes');</code></pre>

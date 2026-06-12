@@ -28,7 +28,7 @@ class NoteEntity extends Entity
 }</code></pre>
 <h2>Attributes</h2>
 <table><thead><tr><th>Attribute</th><th>Purpose</th></tr></thead><tbody><tr><td><code>#[Primary]</code></td><td>Marks the primary key column (exactly one per entity)</td></tr><tr><td><code>#[Column]</code></td><td>Marks a regular database column</td></tr></tbody></table>
-<p>Properties <strong>without</strong> an attribute are ignored by the query builder. You can add computed or transient properties that are not stored in the database.</p>
+<p>Properties <strong>without</strong> an attribute are ignored by the query builder — useful for computed or transient values that live only in PHP.</p>
 <h2>Column name constants</h2>
 <p>Define constants for column names and use them in your models:</p>
 <pre><code class="language-php">public const string ID = 'id';
@@ -38,7 +38,7 @@ public const string TEXT = 'text';</code></pre>
 -&gt;select(NoteEntity::ID, NoteEntity::TEXT)</code></pre>
 <h2>Create a new entity</h2>
 <h3>Step 1 — Create the database table</h3>
-<p>Sparkframe has no migrations. Create the table with SQL or a setup script before using the entity.</p>
+<p>Start by creating the matching table in your database. Run SQL directly or use a setup script — see <a href="/documentation/configuration">Configuration</a> for examples.</p>
 <pre><code class="language-sql">CREATE TABLE Tags (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
@@ -95,7 +95,7 @@ $this-&gt;updateQuery()-&gt;addEntity($note)-&gt;execute();
 $this-&gt;deleteQuery()-&gt;addEntity($note)-&gt;execute();</code></pre>
 <h2>Entity helper methods</h2>
 <p>These methods are available on every entity (you rarely call them directly in application code):</p>
-<table><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>getColumnNames()</code></td><td>All annotated column names</td></tr><tr><td><code>getPrimaryKeyColumnName()</code></td><td>Primary key column name</td></tr><tr><td><code>getValuesArray()</code></td><td><code>[&#039;column&#039; =&gt; value]</code> for queries</td></tr><tr><td>`setId(int\</td><td>string $id)`</td><td>Set primary key after insert</td></tr></tbody></table>
+<table><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>getColumnNames()</code></td><td>All annotated column names</td></tr><tr><td><code>getPrimaryKeyColumnName()</code></td><td>Primary key column name</td></tr><tr><td><code>getValuesArray()</code></td><td><code>[&#039;column&#039; =&gt; value]</code> for queries</td></tr><tr><td><code>setId(int|string $id)</code></td><td>Set primary key after insert</td></tr></tbody></table>
 <nav class="documentation-pager" aria-label="Page navigation">
     <a href="/documentation/controllers" role="button" class="secondary">Previous</a>
     <span class="documentation-pager__topic documentation-pager__topic--prev">Controllers</span>

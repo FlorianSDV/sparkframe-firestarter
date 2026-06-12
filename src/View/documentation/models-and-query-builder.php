@@ -186,16 +186,16 @@ public function deleteNote(NoteEntity $note): void
     $this-&gt;deleteQuery()-&gt;addEntity($note)-&gt;execute();
 }</code></pre>
 <h2>Important caveats</h2>
-<h3>Column names in <code>select()</code> are not parameterized</h3>
-<p>Only use trusted column names (your constants), never user input:</p>
+<h3>Use trusted column names in <code>select()</code></h3>
+<p>Column names are inserted into SQL as-is — use your entity constants, never user input:</p>
 <pre><code class="language-php">// Safe
 -&gt;select(NoteEntity::ID, NoteEntity::TEXT)
 
 // Unsafe — do not do this
 -&gt;select($_GET['column'])</code></pre>
 <p>WHERE values are bound as prepared statement parameters and are safe.</p>
-<h3>No JOIN or ORDER BY</h3>
-<p>The query builder does not support <code>JOIN</code>, <code>LEFT JOIN</code>, or <code>ORDER BY</code>. For complex queries, run raw SQL through PDO or extend the framework.</p>
+<h3>JOIN and ORDER BY</h3>
+<p>For <code>JOIN</code>, <code>LEFT JOIN</code>, or <code>ORDER BY</code> queries, run raw SQL through PDO or extend the framework.</p>
 <h3>Table must exist</h3>
 <p>Create tables before using models. See <a href="/documentation/configuration">Configuration</a> for setup scripts.</p>
 <nav class="documentation-pager" aria-label="Page navigation">

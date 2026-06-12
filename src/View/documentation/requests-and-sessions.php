@@ -18,7 +18,7 @@ public function createNote(): void
 <p>Access fields by name:</p>
 <pre><code class="language-php">$text = $post['text'];
 $id = (int) $post['id'];</code></pre>
-<p>Validate and sanitize input in your controller or model. Sparkframe does not provide a validation layer.</p>
+<p>Validate and sanitize input in your controller or model — you decide what rules apply.</p>
 <h2>JSON request body (API)</h2>
 <p>For APIs that send JSON in the request body, read the raw body and decode it:</p>
 <pre><code class="language-php">#[Route('/api/notes/create', RequestMethod::POST)]
@@ -43,9 +43,9 @@ public function createNote(): void
 <p>Sparkframe provides two global helper functions (loaded automatically by Composer):</p>
 <pre><code class="language-php">setInSession('user_id', 42);
 $userId = getFromSession('user_id');</code></pre>
-<p>These wrap <code>$_SESSION</code> directly. There is no session flash or expiration API built in.</p>
+<p>These wrap <code>$_SESSION</code> directly. Build flash messages or expiration logic in your own code when you need them.</p>
 <h2>JSON API responses</h2>
-<p>Sparkframe does not include JSON response helpers. Return JSON with <code>echo json_encode(...)</code>:</p>
+<p>Return JSON with <code>echo json_encode(...)</code>:</p>
 <pre><code class="language-php">#[Route('/api/notes', RequestMethod::GET)]
 public function getAllNotes(): void
 {
@@ -64,7 +64,7 @@ echo json_encode($data);</code></pre>
     var_dump($e);
     echo "&lt;/pre&gt;";
 }</code></pre>
-<p>Customize these catch blocks to log errors and show a generic error page. Sparkframe does not provide error handling utilities.</p>
+<p>Customize these catch blocks to log errors and show a generic error page.</p>
 <nav class="documentation-pager" aria-label="Page navigation">
     <a href="/documentation/views" role="button" class="secondary">Previous</a>
     <span class="documentation-pager__topic documentation-pager__topic--prev">Views</span>

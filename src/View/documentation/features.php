@@ -24,9 +24,6 @@
 <h2>Sessions</h2>
 <ul><li><code>getFromSession($key)</code> and <code>setInSession($key, $value)</code> global helpers</li><li>Session started via <code>Bootstrapper::startSession()</code> in your bootstrap</li></ul>
 <p>→ <a href="/documentation/requests-and-sessions">Requests and sessions</a></p>
-<h2>Not included</h2>
-<p>The following are <strong>not</strong> part of Sparkframe. Plan to implement them yourself if you need them:</p>
-<table><thead><tr><th>Area</th><th>Status</th></tr></thead><tbody><tr><td>Authentication / authorization</td><td>Not included</td></tr><tr><td>Middleware / request pipeline</td><td>Not included</td></tr><tr><td>Dependency injection container</td><td>Not included</td></tr><tr><td>Database migrations</td><td>Not included — create tables manually or via setup scripts</td></tr><tr><td>Form validation</td><td>Not included</td></tr><tr><td>CSRF protection</td><td>Not included</td></tr><tr><td>Caching</td><td>Not included</td></tr><tr><td>Logging</td><td>Not included</td></tr><tr><td>JOIN / ORDER BY in query builder</td><td>Not included</td></tr><tr><td>Production error pages</td><td>Not included — customize <code>appstart.php</code> yourself</td></tr></tbody></table>
 <nav class="documentation-pager" aria-label="Page navigation">
     <a href="/documentation/introduction" role="button" class="secondary">Previous</a>
     <span class="documentation-pager__topic documentation-pager__topic--prev">Introduction</span>
