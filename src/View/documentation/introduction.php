@@ -5,7 +5,7 @@
 <h2>What is Sparkframe?</h2>
 <p>Sparkframe (<code>floriansdv/sparkframe</code>) is a lightweight PHP library for personal projects. It gives you a structured way to build web applications without the complexity of a full-stack framework.</p>
 <p>You install it as a Composer dependency and extend its base classes in your own <code>App\</code> namespace. Sparkframe Firestarter (this repository) is a working example you can copy to get started quickly.</p>
-<p>I build Sparkframe as a personal challenge. I started this project for the following reasons:</p>
+<p>I build Sparkframe as a personal challenge I started this project for the following reasons:</p>
 <ul><li>for fun</li><li>to learn more about PHP features that I don&#039;t use daily</li><li>learn more about composer </li><li>I wanted to finish something</li></ul>
 <p><strong>Requirements:</strong> PHP 8.4 or higher, with the PDO extension.</p>
 <h2>Core concepts</h2>
@@ -21,7 +21,7 @@
 <p>You can add these yourself or keep your application simple. Knowing these limits upfront helps you decide whether Sparkframe fits your project.</p>
 <h2>How your application uses Sparkframe</h2>
 <p>Your app lives alongside the framework:</p>
-<pre><code>your-app/
+<pre><code class="language-plaintext">your-app/
   public/index.php          ← entry point
   src/
     Bootstrap/              ← your bootstrapper and database config

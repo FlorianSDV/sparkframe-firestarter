@@ -152,6 +152,22 @@ footer {
     overflow-x: auto;
 }
 
+.documentation-content pre:has(> code.hljs) {
+    background: transparent;
+    border: none;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+.documentation-content pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1rem;
+    border-radius: var(--pico-border-radius);
+    font-size: 0.875em;
+    line-height: 1.5;
+}
+
 .documentation-content pre.mermaid,
 .documentation-content .mermaid {
     background: transparent;

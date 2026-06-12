@@ -36,6 +36,11 @@ class DocumentationController extends BaseController
         'views' => 'Views',
         'requests-and-sessions' => 'Requests and sessions',
     ];
+
+    private const HEAD_EXTRA = <<<'HTML'
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github.min.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css" media="(prefers-color-scheme: dark)">
+HTML;
     
     #[Route('/documentation', RequestMethod::GET)]
     #[Route('/documentation/{:str}', RequestMethod::GET)]
@@ -49,7 +54,10 @@ class DocumentationController extends BaseController
 
         $this->renderPage(
             viewName: 'documentation/' . $page_name,
-            data: ['currentPage' => $page_name],
+            data: [
+                'currentPage' => $page_name,
+                'headExtra' => self::HEAD_EXTRA,
+            ],
             title: 'Sparkframe - ' . $pageTitle,
             activeNav: 'documentation'
         );

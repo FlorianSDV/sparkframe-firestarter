@@ -6,7 +6,7 @@
 <h2>Environment variables</h2>
 <p>When you call <code>initializeGlobals($root_dir)</code>, the framework loads <code>.env</code> using <a href="https://github.com/vlucas/phpdotenv">vlucas/phpdotenv</a>. Variables are available as <code>$_ENV[&#039;VARIABLE_NAME&#039;]</code>.</p>
 <p>Copy <code>.env.example</code> to <code>.env</code> and adjust values for your environment:</p>
-<pre><code>DB_URL_SQLITE=sqlite:/var/www/html/sqlite_db/notes-app.sqlite
+<pre><code class="language-ini">DB_URL_SQLITE=sqlite:/var/www/html/sqlite_db/notes-app.sqlite
 
 DB_URL_MYSQL=mysql:host=db;dbname=notes_app
 MYSQL_ROOT_PASSWORD=root
@@ -18,7 +18,7 @@ XDEBUG_HOST_PORT=9003</code></pre>
 <p>Sparkframe does not validate that required variables exist. If a variable is missing, your app will fail when it tries to connect.</p>
 <h2>Database connections</h2>
 <p>Create a class that extends <code>Sparkframe\Database\BaseDatabaseInfoCollection</code> and maps <strong>named</strong> databases to <code>DatabaseInfo</code> objects:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -50,7 +50,7 @@ class DatabaseInfoCollection extends BaseDatabaseInfoCollection
 <p>You can register one or more databases. The framework picks the correct wrapper (MySQL or SQLite) based on the DSN.</p>
 <h2>Switching databases in a model</h2>
 <p>When you construct a model, pass the database name as the second argument:</p>
-<pre><code>// Use SQLite
+<pre><code class="language-php">// Use SQLite
 parent::__construct(NoteEntity::class, 'SqLite');
 
 // Use MySQL
@@ -60,7 +60,7 @@ parent::__construct(NoteEntity::class, 'MySQL');</code></pre>
 <p>Sparkframe has no migration system. You create tables yourself:</p>
 <ul><li>Run SQL manually</li><li>Use a setup script invoked via Composer</li></ul>
 <p>Firestarter includes setup scripts as an <strong>application pattern</strong>, not a framework feature:</p>
-<pre><code>composer create-sqlite-db   # Creates SQLite file and Notes table
+<pre><code class="language-bash">composer create-sqlite-db   # Creates SQLite file and Notes table
 composer create-mysql-db    # Creates MySQL database and Notes table</code></pre>
 <p>These scripts live in <code>sqlite_db/</code> and <code>MySql/</code> in the firestarter project. Copy and adapt them for your own entities.</p>
 <h2>Local development without Docker</h2>

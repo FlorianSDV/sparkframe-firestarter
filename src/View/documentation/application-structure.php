@@ -5,7 +5,7 @@
 <p>This page describes how a Sparkframe application is organized and how it starts up.</p>
 <h2>Directory layout</h2>
 <p>A typical project looks like this:</p>
-<pre><code>your-app/
+<pre><code class="language-plaintext">your-app/
 ├── public/
 │   ├── index.php          # Front controller — only web entry point
 │   ├── .htaccess          # Apache rewrite rules (optional)
@@ -25,7 +25,7 @@
 <table><thead><tr><th>Directory</th><th>Purpose</th></tr></thead><tbody><tr><td><code>public/</code></td><td>Web root. Only files here are directly accessible by the browser.</td></tr><tr><td><code>src/Bootstrap/</code></td><td>Startup logic: load config, connect databases, start session.</td></tr><tr><td><code>src/Controller/</code></td><td>One class per resource or area; each handles HTTP requests.</td></tr><tr><td><code>src/Entity/</code></td><td>Classes that map to database tables.</td></tr><tr><td><code>src/Model/</code></td><td>Data access layer using the query builder.</td></tr><tr><td><code>src/View/</code></td><td>PHP templates rendered by controllers.</td></tr></tbody></table>
 <h2>Entry point</h2>
 <p>All requests go through a single file:</p>
-<pre><code>// public/index.php
+<pre><code class="language-php">// public/index.php
 &lt;?php
 
 declare(strict_types=1);
@@ -34,7 +34,7 @@ require_once __DIR__ . '/../src/Bootstrap/appstart.php';</code></pre>
 <p><code>appstart.php</code> loads Composer, runs the bootstrap, and dispatches the request.</p>
 <h2>Bootstrap flow</h2>
 <p>Your <code>appstart.php</code> wires the framework together. Firestarter uses this pattern:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -71,13 +71,13 @@ try {
 <p>Add a new controller file and it is picked up on the next request. See <a href="/documentation/controllers">Controllers</a> for how to create one.</p>
 <h2>Apache rewrite</h2>
 <p>If you use Apache, <code>public/.htaccess</code> sends all non-file requests to the front controller:</p>
-<pre><code>RewriteEngine On
+<pre><code class="language-apache">RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]</code></pre>
-<p>If you are instead using PHP&#039;s built-in server, use:</p>
-<pre><code>php -S localhost:8000 -t public/</code></pre>
+<p>With PHP&#039;s built-in server, use:</p>
+<pre><code class="language-bash">php -S localhost:8000 -t public/</code></pre>
 <h2>Your bootstrap classes</h2>
 <p>You extend two framework classes in <code>src/Bootstrap/</code>:</p>
 <p><strong><code>Bootstrapper</code></strong> — extends <code>Sparkframe\Bootstrap\BaseBootstrapper</code>. Firestarter leaves it empty; add custom initialization here if needed.</p>

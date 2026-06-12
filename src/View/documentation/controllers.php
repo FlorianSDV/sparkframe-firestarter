@@ -5,7 +5,7 @@
 <p>Controllers handle HTTP requests. They read input, call models, and return responses (HTML, JSON, or redirects).</p>
 <h2>Base class</h2>
 <p>Extend <code>Sparkframe\Controller\Controller</code>:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -24,7 +24,7 @@ class MyController extends Controller
 <h2>Create a new controller</h2>
 <h3>Step 1 — Create the file</h3>
 <p>Create <code>src/Controller/TagsController.php</code> in the <code>App\Controller</code> namespace:</p>
-<pre><code>&lt;?php
+<pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
 
@@ -60,7 +60,7 @@ class TagsController extends Controller
 <p>Save the file. The framework discovers it on the next request.</p>
 <h2>HTML controller pattern</h2>
 <p>Firestarter&#039;s <code>NotesController</code> follows a typical CRUD pattern:</p>
-<pre><code>#[Route('/notes', RequestMethod::GET)]
+<pre><code class="language-php">#[Route('/notes', RequestMethod::GET)]
 public function getAllNotes(): void
 {
     $notes = $this-&gt;notesModel-&gt;getAllNotes();
@@ -78,7 +78,7 @@ public function createNote(): void
 <ul><li><strong>GET</strong> — fetch data from the model, render a view</li><li><strong>POST</strong> — read form data, mutate via the model, redirect to avoid duplicate submissions</li></ul>
 <h2>Layout wrapper (app convention)</h2>
 <p><code>BaseController::renderPage()</code> is <strong>not</strong> part of Sparkframe. Firestarter adds it to render a header, the main view, and a footer in one call:</p>
-<pre><code>protected function renderPage(
+<pre><code class="language-php">protected function renderPage(
     string $viewName,
     array $data = [],
     string $title = 'Sparkframe Firestarter',
@@ -93,7 +93,7 @@ public function createNote(): void
 <p>Extend <code>BaseController</code> instead of <code>Controller</code> when you want this layout. Extend <code>Controller</code> directly for APIs or pages without a shared layout.</p>
 <h2>JSON API pattern</h2>
 <p><code>NotesApiController</code> extends <code>Controller</code> directly and returns JSON:</p>
-<pre><code>#[Route('/api/notes', RequestMethod::GET)]
+<pre><code class="language-php">#[Route('/api/notes', RequestMethod::GET)]
 public function getAllNotes(): void
 {
     $notes = $this-&gt;notesModel-&gt;getAllNotes();
@@ -110,7 +110,7 @@ public function createNote(): void
 <p>Sparkframe does not include JSON helpers. Use <code>json_encode()</code> and <code>json_decode()</code> as needed. Set <code>Content-Type: application/json</code> in your response if required by your API consumers.</p>
 <h2>Redirect after mutation</h2>
 <p>After creating, updating, or deleting data, redirect to a GET page:</p>
-<pre><code>$this-&gt;redirect('/notes');</code></pre>
+<pre><code class="language-php">$this-&gt;redirect('/notes');</code></pre>
 <p><code>redirect()</code> sends a <code>Location</code> header and calls <code>exit</code>. No code after it runs.</p>
 <h2>Next steps</h2>
 <ul><li><a href="/documentation/routing">Routing</a> — define URLs for your controller methods</li><li><a href="/documentation/models-and-query-builder">Models and query builder</a> — access data from controllers</li><li><a href="/documentation/views">Views</a> — render HTML templates</li><li><a href="/documentation/requests-and-sessions">Requests and sessions</a> — read POST data and JSON bodies</li></ul>
