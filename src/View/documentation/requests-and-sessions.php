@@ -65,7 +65,11 @@ echo json_encode($data);</code></pre>
     echo "&lt;/pre&gt;";
 }</code></pre>
 <p>Customize these catch blocks to log errors and show a generic error page. Sparkframe does not provide error handling utilities.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/controllers">Controllers</a> — use request data in route handlers</li><li><a href="/documentation/routing">Routing</a> — define routes for different HTTP methods</li><li><a href="/documentation/views">Views</a> — render HTML responses</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/views" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Views</span>
+    <span class="documentation-pager__spacer" aria-hidden="true"></span>
+    <span class="documentation-pager__spacer" aria-hidden="true"></span>
+</nav>
     </article>
 </div>

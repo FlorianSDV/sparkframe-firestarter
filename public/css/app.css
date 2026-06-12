@@ -178,3 +178,37 @@ footer {
 .documentation-content .mermaid svg {
     max-width: 100%;
 }
+
+.documentation-pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--pico-muted-border-color);
+}
+
+.documentation-pager__topic {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.9rem;
+}
+
+.documentation-pager__topic--next {
+    text-align: right;
+}
+
+.documentation-pager__spacer {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .documentation-pager {
+        flex-wrap: wrap;
+    }
+
+    .documentation-pager__topic {
+        flex-basis: calc(50% - 0.5rem);
+    }
+}

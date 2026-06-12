@@ -66,7 +66,11 @@ composer create-mysql-db    # Creates MySQL database and Notes table</code></pre
 <h2>Local development without Docker</h2>
 <p>For running on your host machine, use <code>.env.local.example</code> as a template. You may need to set <code>DB_URL_SQLITE</code> to the absolute path of your SQLite file.</p>
 <p>See the project <a href="/">Readme.md</a> for full installation and Docker instructions.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/models-and-query-builder">Models and query builder</a> — use a configured database in your models</li><li><a href="/documentation/application-structure">Application structure</a> — where configuration fits in the bootstrap</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/application-structure" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Application structure</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Routing</span>
+    <a href="/documentation/routing" role="button">Next</a>
+</nav>
     </article>
 </div>

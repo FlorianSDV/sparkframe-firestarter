@@ -198,7 +198,11 @@ public function deleteNote(NoteEntity $note): void
 <p>The query builder does not support <code>JOIN</code>, <code>LEFT JOIN</code>, or <code>ORDER BY</code>. For complex queries, run raw SQL through PDO or extend the framework.</p>
 <h3>Table must exist</h3>
 <p>Create tables before using models. See <a href="/documentation/configuration">Configuration</a> for setup scripts.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/entities">Entities</a> — define the classes your models use</li><li><a href="/documentation/controllers">Controllers</a> — call models from route handlers</li><li><a href="/documentation/configuration">Configuration</a> — connect to the right database</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/entities" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Entities</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Views</span>
+    <a href="/documentation/views" role="button">Next</a>
+</nav>
     </article>
 </div>

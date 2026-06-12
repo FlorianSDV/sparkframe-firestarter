@@ -112,7 +112,11 @@ public function createNote(): void
 <p>After creating, updating, or deleting data, redirect to a GET page:</p>
 <pre><code class="language-php">$this-&gt;redirect('/notes');</code></pre>
 <p><code>redirect()</code> sends a <code>Location</code> header and calls <code>exit</code>. No code after it runs.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/routing">Routing</a> — define URLs for your controller methods</li><li><a href="/documentation/models-and-query-builder">Models and query builder</a> — access data from controllers</li><li><a href="/documentation/views">Views</a> — render HTML templates</li><li><a href="/documentation/requests-and-sessions">Requests and sessions</a> — read POST data and JSON bodies</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/routing" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Routing</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Entities</span>
+    <a href="/documentation/entities" role="button">Next</a>
+</nav>
     </article>
 </div>

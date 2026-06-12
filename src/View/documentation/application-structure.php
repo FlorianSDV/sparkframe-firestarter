@@ -82,7 +82,11 @@ RewriteRule ^ index.php [QSA,L]</code></pre>
 <p>You extend two framework classes in <code>src/Bootstrap/</code>:</p>
 <p><strong><code>Bootstrapper</code></strong> — extends <code>Sparkframe\Bootstrap\BaseBootstrapper</code>. Firestarter leaves it empty; add custom initialization here if needed.</p>
 <p><strong><code>DatabaseInfoCollection</code></strong> — extends <code>Sparkframe\Database\BaseDatabaseInfoCollection</code>. Maps named databases to connection details from <code>.env</code>. See <a href="/documentation/configuration">Configuration</a>.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/configuration">Configuration</a> — set up <code>.env</code> and database connections</li><li><a href="/documentation/routing">Routing</a> — define your first routes</li><li><a href="/documentation/controllers">Controllers</a> — create a controller</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/features" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Features</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Configuration</span>
+    <a href="/documentation/configuration" role="button">Next</a>
+</nav>
     </article>
 </div>
