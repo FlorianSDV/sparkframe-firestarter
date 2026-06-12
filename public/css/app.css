@@ -143,9 +143,29 @@ footer {
     min-width: 0;
 }
 
+.documentation-content :is(pre, table) {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .documentation-content table {
-    display: block;
-    overflow-x: auto;
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.documentation-content table th,
+.documentation-content table td {
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.documentation-content table code {
+    white-space: normal;
+    word-break: break-word;
 }
 
 .documentation-content pre {
@@ -170,6 +190,7 @@ footer {
 
 .documentation-content pre.mermaid,
 .documentation-content .mermaid {
+    width: 100%;
     background: transparent;
     border: none;
     padding: 0;
