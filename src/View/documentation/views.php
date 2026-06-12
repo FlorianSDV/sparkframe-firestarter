@@ -57,7 +57,11 @@ $this-&gt;render('partials/footer', $layoutData);</code></pre>
 <pre><code class="language-php">$post = $this-&gt;request-&gt;getRequestPost();
 $note = $this-&gt;notesModel-&gt;createNote($post);</code></pre>
 <p>Sparkframe does not include CSRF protection. Add tokens yourself if your application needs them.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/controllers">Controllers</a> — call <code>render()</code> from route handlers</li><li><a href="/documentation/requests-and-sessions">Requests and sessions</a> — handle form POST data</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/models-and-query-builder" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Models and query builder</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Requests and sessions</span>
+    <a href="/documentation/requests-and-sessions" role="button">Next</a>
+</nav>
     </article>
 </div>

@@ -49,7 +49,11 @@
     Controller-->>Browser: HTML, JSON, or redirect</pre>
 <ol><li>The web server sends the request to <code>public/index.php</code>.</li><li><code>appstart.php</code> loads Composer, initializes configuration, connects to databases, and discovers controllers.</li><li><code>RequestHandler</code> matches the URL and HTTP method to a controller method.</li><li>The controller method runs and returns a response (HTML page, JSON, or redirect).</li></ol>
 <p>For details on wiring the bootstrap, see <a href="/documentation/application-structure">Application structure</a>.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/features">Features</a> — see everything Sparkframe offers at a glance</li><li><a href="/documentation/application-structure">Application structure</a> — understand the project layout</li><li><a href="/documentation/routing">Routing</a> — define your first route</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/overview" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Overview</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Features</span>
+    <a href="/documentation/features" role="button">Next</a>
+</nav>
     </article>
 </div>

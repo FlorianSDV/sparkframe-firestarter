@@ -95,8 +95,12 @@ $this-&gt;updateQuery()-&gt;addEntity($note)-&gt;execute();
 $this-&gt;deleteQuery()-&gt;addEntity($note)-&gt;execute();</code></pre>
 <h2>Entity helper methods</h2>
 <p>These methods are available on every entity (you rarely call them directly in application code):</p>
-<table><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>getColumnNames()</code></td><td>All annotated column names</td></tr><tr><td><code>getPrimaryKeyColumnName()</code></td><td>Primary key column name</td></tr><tr><td><code>getValuesArray()</code></td><td><code>[&#039;column&#039; =&gt; value]</code> for queries</td></tr><tr><td><code>setId(int|string $id)</code></td><td>Set primary key after insert</td></tr></tbody></table>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/models-and-query-builder">Models and query builder</a> — use entities in your data layer</li><li><a href="/documentation/configuration">Configuration</a> — ensure your database table exists</li></ul>
+<table><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td><code>getColumnNames()</code></td><td>All annotated column names</td></tr><tr><td><code>getPrimaryKeyColumnName()</code></td><td>Primary key column name</td></tr><tr><td><code>getValuesArray()</code></td><td><code>[&#039;column&#039; =&gt; value]</code> for queries</td></tr><tr><td>`setId(int\</td><td>string $id)`</td><td>Set primary key after insert</td></tr></tbody></table>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/controllers" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Controllers</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Models and query builder</span>
+    <a href="/documentation/models-and-query-builder" role="button">Next</a>
+</nav>
     </article>
 </div>

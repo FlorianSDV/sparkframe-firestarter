@@ -27,5 +27,11 @@
 <h2>Not included</h2>
 <p>The following are <strong>not</strong> part of Sparkframe. Plan to implement them yourself if you need them:</p>
 <table><thead><tr><th>Area</th><th>Status</th></tr></thead><tbody><tr><td>Authentication / authorization</td><td>Not included</td></tr><tr><td>Middleware / request pipeline</td><td>Not included</td></tr><tr><td>Dependency injection container</td><td>Not included</td></tr><tr><td>Database migrations</td><td>Not included — create tables manually or via setup scripts</td></tr><tr><td>Form validation</td><td>Not included</td></tr><tr><td>CSRF protection</td><td>Not included</td></tr><tr><td>Caching</td><td>Not included</td></tr><tr><td>Logging</td><td>Not included</td></tr><tr><td>JOIN / ORDER BY in query builder</td><td>Not included</td></tr><tr><td>Production error pages</td><td>Not included — customize <code>appstart.php</code> yourself</td></tr></tbody></table>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/introduction" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Introduction</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Application structure</span>
+    <a href="/documentation/application-structure" role="button">Next</a>
+</nav>
     </article>
 </div>

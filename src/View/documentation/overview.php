@@ -8,5 +8,11 @@
 <h2>Example application</h2>
 <p>Throughout these docs, examples refer to the notes app in this repository:</p>
 <ul><li><code>NotesController</code> — HTML CRUD</li><li><code>NotesApiController</code> — JSON REST API</li><li><code>NoteEntity</code> — database mapping</li><li><code>NotesModel</code> — query builder usage</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <span class="documentation-pager__spacer" aria-hidden="true"></span>
+    <span class="documentation-pager__spacer" aria-hidden="true"></span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Introduction</span>
+    <a href="/documentation/introduction" role="button">Next</a>
+</nav>
     </article>
 </div>

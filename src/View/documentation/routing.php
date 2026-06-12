@@ -77,7 +77,11 @@ class ArchiveController extends Controller
 <h2>Debugging routes</h2>
 <p><code>MainController</code> in firestarter lists all registered routes on the homepage by calling <code>Router::getRoutes()</code>. This is useful during development to verify your routes are discovered.</p>
 <p>Do not rely on this in production; it is a debug aid only.</p>
-<h2>Next steps</h2>
-<ul><li><a href="/documentation/controllers">Controllers</a> — what to put inside route handler methods</li><li><a href="/documentation/requests-and-sessions">Requests and sessions</a> — read POST data and JSON bodies</li></ul>
+<nav class="documentation-pager" aria-label="Page navigation">
+    <a href="/documentation/configuration" role="button" class="secondary">Previous</a>
+    <span class="documentation-pager__topic documentation-pager__topic--prev">Configuration</span>
+    <span class="documentation-pager__topic documentation-pager__topic--next">Controllers</span>
+    <a href="/documentation/controllers" role="button">Next</a>
+</nav>
     </article>
 </div>
