@@ -8,7 +8,7 @@ use Sparkframe\Controller\Controller;
 
 abstract class BaseController extends Controller
 {
-    protected function renderPage(string $viewName, array $data = [], string $title = 'Sparkframe Firestarter', string $activeNav = ''): void
+    protected function renderPage(array $viewNames, array $data = [], string $title = 'Sparkframe Firestarter', string $activeNav = ''): void
     {
         $layoutData = array_merge($data, [
             'title' => $title,
@@ -16,14 +16,16 @@ abstract class BaseController extends Controller
         ]);
 
         $this->render('partials/header', $layoutData);
-        $this->render($viewName, $data);
+        foreach ($viewNames as $viewName) {
+            $this->render($viewName, $data);
+        }
         $this->render('partials/footer', $layoutData);
     }
 
     protected function redirect_404(): void
     {
         $this->renderPage(
-            viewName: '404',
+            viewNames: ['404'],
             title: 'Not found'
         );
     }

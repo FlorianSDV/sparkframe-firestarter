@@ -32,6 +32,6 @@ class MainController extends BaseController
             $sorted_routes,
             static fn($a, $b) => strcmp($a['method_route']->getUriString(), $b['method_route']->getUriString())
         );
-        $this->renderPage('index', ['sorted_routes' => $sorted_routes], 'Sparkframe Firestarter', 'home');
+        $this->renderPage(['index'], ['sorted_routes' => $sorted_routes], 'Sparkframe Firestarter', 'home');
     }
 }
