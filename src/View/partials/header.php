@@ -17,6 +17,7 @@ namespace App\View\partials;
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <?php $headImports = $headImports ?? []; ?>
     <?php foreach ($headImports as $headImport): ?>
         <?= $headImport; ?>
     <?php endforeach; ?>

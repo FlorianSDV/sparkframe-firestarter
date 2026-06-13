@@ -53,7 +53,7 @@ HTML;
         $pageTitle = self::PAGE_TITLES[$page_name];
 
         $this->renderPage(
-            viewName: 'documentation/' . $page_name,
+            viewNames: ['documentation/' . $page_name],
             data: [
                 'currentPage' => $page_name,
                 'headImports' => [self::HEAD_EXTRA],

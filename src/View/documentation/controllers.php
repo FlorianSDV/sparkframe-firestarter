@@ -71,7 +71,7 @@ class TagsController extends Controller
 public function getAllNotes(): void
 {
     $notes = $this-&gt;notesModel-&gt;getAllNotes();
-    $this-&gt;renderPage('notes/index', ['notes' =&gt; $notes], 'Notes', 'notes');
+    $this-&gt;renderPage(['notes/index'], ['notes' =&gt; $notes], 'Notes', 'notes');
 }
 
 #[Route('/notes/create', RequestMethod::POST)]
@@ -89,7 +89,7 @@ public function createNote(): void
         <h2>Layout wrapper (app convention)</h2>
         <p><code>BaseController::renderPage()</code> is a Firestarter convention that renders a header, the main view, and a footer in one call:</p>
         <pre><code class="language-php">protected function renderPage(
-    string $viewName,
+    array $viewNames,
     array $data = [],
     string $title = 'Sparkframe Firestarter',
     string $activeNav = ''
@@ -97,7 +97,9 @@ public function createNote(): void
 {
     $layoutData = array_merge($data, ['title' =&gt; $title, 'activeNav' =&gt; $activeNav]);
     $this-&gt;render('partials/header', $layoutData);
-    $this-&gt;render($viewName, $data);
+    foreach ($viewNames as $viewName) {
+        $this-&gt;render($viewName, $data);
+    }
     $this-&gt;render('partials/footer', $layoutData);
 }</code></pre>
         <p>Extend <code>BaseController</code> instead of <code>Controller</code> when you want this layout. Extend <code>Controller</code> directly for APIs or pages without a shared layout.</p>
