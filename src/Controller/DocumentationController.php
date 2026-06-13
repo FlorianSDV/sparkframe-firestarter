@@ -56,7 +56,7 @@ HTML;
             viewName: 'documentation/' . $page_name,
             data: [
                 'currentPage' => $page_name,
-                'headExtra' => self::HEAD_EXTRA,
+                'headImports' => [self::HEAD_EXTRA],
             ],
             title: 'Sparkframe - ' . $pageTitle,
             activeNav: 'documentation'
