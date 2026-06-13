@@ -27,7 +27,7 @@ class NotesController extends BaseController
     public function getAllNotes(): void
     {
         $notes = $this->notesModel->getAllNotes();
-        $this->renderPage('notes/index', ['notes' => $notes], 'Notes', 'notes');
+        $this->renderPage(['notes/index'], ['notes' => $notes], 'Notes', 'notes');
     }
 
     /**
@@ -37,7 +37,7 @@ class NotesController extends BaseController
     public function getNote(int $id): void
     {
         $note = $this->notesModel->getNote($id);
-        $this->renderPage('notes/show', ['note' => $note], 'Note', 'notes');
+        $this->renderPage(['notes/show'], ['note' => $note], 'Note', 'notes');
     }
 
     /**
@@ -46,7 +46,7 @@ class NotesController extends BaseController
     #[Route('/notes/create', RequestMethod::GET)]
     public function showCreateForm(): void
     {
-        $this->renderPage('notes/create', [], 'New note', 'notes');
+        $this->renderPage(['notes/create'], [], 'New note', 'notes');
     }
 
     /**
