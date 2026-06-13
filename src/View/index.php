@@ -19,6 +19,7 @@ use Sparkframe\Tools\MethodRoute;
     <ul>
         <li><a href="/">Home</a> — this page</li>
         <li><a href="/notes">Notes</a> — list all notes</li>
+        <li><a href="/documentation">Documentation</a> — framework usage guides</li>
     </ul>
 </section>
 
