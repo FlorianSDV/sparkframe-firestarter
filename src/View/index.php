@@ -43,7 +43,3 @@ use Sparkframe\Tools\MethodRoute;
         ?>
     </ul>
 </section>
-
-<p>
-    <a role="button" href="/notes">View notes</a>
-</p>
