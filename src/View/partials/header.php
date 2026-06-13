@@ -6,6 +6,7 @@ namespace App\View\partials;
 
 /** @var string $title */
 /** @var string $activeNav */
+/** @var array<string> $headImports */
 
 ?>
 <!DOCTYPE html>
@@ -16,6 +17,9 @@ namespace App\View\partials;
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <?php foreach ($headImports as $headImport): ?>
+        <?= $headImport; ?>
+    <?php endforeach; ?>
 </head>
 <body>
 <header class="container">
@@ -29,6 +33,9 @@ namespace App\View\partials;
             </li>
             <li>
                 <a href="/notes"<?= $activeNav === 'notes' ? ' aria-current="page"' : ''; ?>>Notes</a>
+            </li>
+            <li>
+                <a href="/documentation"<?= $activeNav === 'documentation' ? ' aria-current="page"' : ''; ?>>Documentation</a>
             </li>
         </ul>
     </nav>
