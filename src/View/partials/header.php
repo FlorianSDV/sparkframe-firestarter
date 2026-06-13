@@ -6,7 +6,7 @@ namespace App\View\partials;
 
 /** @var string $title */
 /** @var string $activeNav */
-/** @var string|null $headExtra */
+/** @var array<string> $headImports */
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,9 @@ namespace App\View\partials;
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="/css/app.css">
-    <?= $headExtra ?? ''; ?>
+    <?php foreach ($headImports as $headImport): ?>
+        <?= $headImport; ?>
+    <?php endforeach; ?>
 </head>
 <body>
 <header class="container">
