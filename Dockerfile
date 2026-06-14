@@ -32,7 +32,7 @@ RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer in
 COPY . .
 
 # Dump the autoloader
-RUN composer dump-autoload --classmap-authoritative --no-dev
+RUN composer dump-autoload --no-dev
 
 FROM base as dev
 
@@ -49,4 +49,4 @@ RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer in
 COPY . .
 
 # Dump the autoloader
-RUN composer dump-autoload --classmap-authoritative
+RUN composer dump-autoload
