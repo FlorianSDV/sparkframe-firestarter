@@ -10,8 +10,11 @@ require __DIR__ . '/../../vendor/autoload.php';
 try {
     $root_dir = dirname(__DIR__, 2);
     $bootstrapper = Bootstrapper::getInstance();
-    
-    $bootstrapper->initializeGlobals($root_dir);
+
+    // Your controller file can be anywhere. In this case we put them in /src/Controller/
+    $controllers_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Controller';
+
+    $bootstrapper->initializeGlobals($root_dir, $controllers_dir);
     $database_info_collection = new DatabaseInfoCollection();
     $bootstrapper->bootstrap($database_info_collection);
 
