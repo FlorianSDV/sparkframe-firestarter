@@ -37,7 +37,7 @@ function createDatabaseWrapperWithRetry(DatabaseInfo $databaseInfo): DatabaseWra
 
 // Globals are needed to make use of environment variables
 $globals = Globals::getInstance();
-$globals->initialize(__DIR__ . '/../');
+$globals->initialize(__DIR__ . '/../', '', '');
 
 
 /** @var DatabaseInfo $mysql_database_info */
