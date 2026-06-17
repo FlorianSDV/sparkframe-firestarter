@@ -14,7 +14,10 @@ try {
     // Your controller file can be anywhere. In this case we put them in /src/Controller/
     $controllers_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Controller';
 
-    $bootstrapper->initializeGlobals($root_dir, $controllers_dir);
+    // Your view files can be anywhere. In this case we put them in /View
+    $view_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'View';
+
+    $bootstrapper->initializeGlobals($root_dir, $controllers_dir, $view_dir);
     $database_info_collection = new DatabaseInfoCollection();
     $bootstrapper->bootstrap($database_info_collection);
 
