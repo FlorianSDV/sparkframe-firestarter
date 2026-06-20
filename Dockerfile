@@ -26,8 +26,11 @@ ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/relea
 
 RUN install-php-extensions pdo_mysql
 
-# Install the prod dependencies by allowing Docker to use the auth.json file of the host
-RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-dev --no-scripts --no-autoloader --no-progress --no-interaction
+# Install the dependencies by allowing Docker to use the auth.json file of the host
+# RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-dev --no-scripts --no-autoloader --no-progress --no-interaction
+
+# Comment out the following line if you are using private composer packages
+RUN composer install --no-dev --no-scripts --no-autoloader --no-progress --no-interaction
 
 COPY . .
 
@@ -43,8 +46,11 @@ ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/relea
 
 RUN install-php-extensions xdebug pdo_mysql
 
-# Install the prod dependencies by allowing Docker to use the auth.json file of the host
-RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-scripts --no-autoloader --no-progress --no-interaction
+# Install the dependencies by allowing Docker to use the auth.json file of the host
+# RUN --mount=type=secret,id=composer_auth,dst=/var/www/html/auth.json composer install --no-scripts --no-autoloader --no-progress --no-interaction
+
+# Comment out the following line if you are using private composer packages
+RUN composer install --no-scripts --no-autoloader --no-progress --no-interaction
 
 COPY . .
 
