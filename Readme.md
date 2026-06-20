@@ -16,7 +16,7 @@ If you are using private composer packages, see [Using private composer packages
 cp .env.example .env
 ```
 
-2. In `.env`, set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
+2.If you are using private composer packages, go [here](#using-private-composer-packages) first. (probably not necessary if you are just getting started)
 
 Make sure:
 - That the `.env` file is created before creating the devcontainer
@@ -36,7 +36,7 @@ The production stack runs the PHP application and a MySQL container in Docker. S
 cp .env.example .env
 ```
 
-2. In `.env`, set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
+2.If you are using private composer packages, go [here](#using-private-composer-packages) first. (probably not necessary if you are just getting started)
 
 3. Create and start the production stack:
 ```shell
@@ -60,7 +60,7 @@ The development stack runs the PHP application (with Xdebug) and a MySQL contain
 cp .env.example .env
 ```
 
-2. In `.env`, set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
+2.If you are using private composer packages, go [here](#using-private-composer-packages) first. (probably not necessary if you are just getting started)
 
 3. Create and start the development stack:
 ```shell
@@ -136,10 +136,10 @@ make stop-dev-container
 make stop-production-container
 ```
 # Using private composer packages
-If you are using private composer packages you need to add the following to the .env file:
+- If you are using private composer packages you need to add the following to the .env file:
 ```shell
 COMPOSER_AUTH_PATH=/path/to/your/auth.json
 ```
-Then uncomment the secret sections in the docker-compose.yml, docker-compose-dev.yml and Dockerfile files.
-
-Then recreate the images as you would normally do.
+- Set `COMPOSER_AUTH_PATH` to the absolute path of your `auth.json` on the host (required for `composer install` during the image build).
+- Then uncomment the secret sections in the docker-compose.yml, docker-compose-dev.yml and Dockerfile files.
+- Then recreate the images as you would normally do. If you are setting up the project for the first time continue with the previous step.
