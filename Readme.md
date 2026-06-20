@@ -1,4 +1,26 @@
+# Introduction
+Sparkframe Firestarter is a skeleton project using the [Sparkframe](https://github.com/floriansdv/sparkframe) framework.
+It is intended to be a starting point for new projects that want to use Sparkframe.
+
+## What is Sparkframe?
+Sparkframe is a lightweight PHP framework to help you get started building web applications.
+I build it for fun, as a personal challenge, and to learn more about PHP, Composer and Docker.
+
+Out of the box this project provides:
+- Docker containers for development and production
+- Support for MySQL and SQLite databases
+  - This project comes with MySQL and SQLite databases that you can edit as you see fit
+- A simple notes application (CRUD) that uses said SQLite and MySQL databases
+- Routing
+- Views
+- Query builders using prepared statements
+- Documentation pages about the framework
+
 # Getting started
+I recommend creating a template repository for your project before continuing.
+
+---
+
 Before you start you need to decide if you want to use Docker or not.
 
 If you want to make use of xdebug and have all the correct tools pre-installed (git, xdebug) use a [devcontainer](#when-using-a-devcontainer).
