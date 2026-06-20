@@ -15,14 +15,8 @@
     }
   ],
   "require": {
-    "floriansdv/sparkframe": "dev-master"
+    "floriansdv/sparkframe": "v0.1.0-alpha"
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/FlorianSDV/Sparkframe.git"
-    }
-  ],
   "scripts": {
     "create-sqlite-db": [
       "php sqlite_db/create-sqlite-db.php"
