@@ -81,7 +81,10 @@ try {
     $root_dir = dirname(__DIR__, 2);
     $bootstrapper = Bootstrapper::getInstance();
 
-    $bootstrapper-&gt;initializeGlobals($root_dir);
+    $controllers_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Controller';
+    $view_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'View';
+
+    $bootstrapper-&gt;initializeGlobals($root_dir, $controllers_dir, $view_dir);
     $database_info_collection = new DatabaseInfoCollection();
     $bootstrapper-&gt;bootstrap($database_info_collection);
 
@@ -97,21 +100,39 @@ try {
 }</code></pre>
         <h3>Step by step</h3>
         <ol>
-            <li><strong><code>initializeGlobals($root_dir)</code></strong> — stores the project root and loads variables from <code>.env</code> into <code>$_ENV</code>.</li>
+            <li><strong><code>initializeGlobals($root_dir, $controllers_dir, $view_dir)</code></strong> — stores the project root, controller directory, and view directory; loads variables from <code>.env</code> into <code>$_ENV</code>.</li>
             <li><strong><code>new DatabaseInfoCollection()</code></strong> — your class that registers named database connections (see <a href="/documentation/configuration">Configuration</a>).</li>
-            <li><strong><code>bootstrap($database_info_collection)</code></strong> — connects to databases, scans <code>src/Controller/</code> for controllers, and registers all routes.</li>
+            <li><strong><code>bootstrap($database_info_collection)</code></strong> — connects to databases, scans the controller directory for controllers, and registers all routes.</li>
             <li><strong><code>startSession()</code></strong> — starts a PHP session (optional; omit if you do not need sessions).</li>
             <li><strong><code>RequestHandler::handle()</code></strong> — matches the current request to a route and calls the controller method.</li>
         </ol>
         <p>Each bootstrap step runs only once, even if called multiple times.</p>
+        <h2>Custom controller directory</h2>
+        <p>The second argument to <code>initializeGlobals()</code> sets which directory the framework scans for controller files. Firestarter uses <code>src/Controller/</code>, but you can point to any directory:</p>
+        <pre><code class="language-php">$controllers_dir = $root_dir . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers';
+$bootstrapper-&gt;initializeGlobals($root_dir, $controllers_dir, $view_dir);</code></pre>
+        <p>During <code>bootstrap()</code>, the framework runs <code>glob($controllers_dir . '/*.php')</code> and instantiates each class it finds.</p>
+        <p>Keep these constraints in mind when using a custom path:</p>
+        <ul>
+            <li>Controller classes must still use the <code>App\Controller\</code> namespace</li>
+            <li>Each class must extend <code>Sparkframe\Controller\Controller</code></li>
+            <li>Abstract classes (such as <code>BaseController</code>) are skipped</li>
+            <li>Your Composer PSR-4 autoload must resolve the namespace to the correct directory — Firestarter maps <code>App\</code> to <code>src/</code>, so controllers must live somewhere under <code>src/</code></li>
+        </ul>
         <h2>Controller auto-discovery</h2>
-        <p>You do not register controllers manually. The framework scans <code>src/Controller/</code> and instantiates every class that:</p>
+        <p>You do not register controllers manually. The framework scans the configured controller directory and instantiates every class that:</p>
         <ul>
             <li>lives in the <code>App\Controller\</code> namespace</li>
             <li>extends <code>Sparkframe\Controller\Controller</code></li>
-            <li>is not named <code>BaseController</code></li>
+            <li>is not <code>abstract</code></li>
         </ul>
         <p>Add a new controller file and it is picked up on the next request. See <a href="/documentation/controllers">Controllers</a> for how to create one.</p>
+        <h2>Custom view directory</h2>
+        <p>The third argument to <code>initializeGlobals()</code> sets the base directory for view files. It is optional (<code>?string $view_dir = null</code>). Firestarter uses <code>src/View/</code>, but you can point to any directory:</p>
+        <pre><code class="language-php">$view_dir = $root_dir . DIRECTORY_SEPARATOR . 'templates';
+$bootstrapper-&gt;initializeGlobals($root_dir, $controllers_dir, $view_dir);</code></pre>
+        <p>When a controller calls <code>$this-&gt;render('notes/index', $data)</code>, the framework resolves the file as <code>$view_dir/notes/index.php</code>. The argument to <code>render()</code> is always a relative view name — never an absolute path.</p>
+        <p>See <a href="/documentation/views">Views</a> for naming conventions and examples.</p>
         <h2>Apache rewrite</h2>
         <p>If you use Apache, <code>public/.htaccess</code> sends all non-file requests to the front controller:</p>
         <pre><code class="language-apache">RewriteEngine On

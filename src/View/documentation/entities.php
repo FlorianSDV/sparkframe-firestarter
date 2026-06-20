@@ -126,11 +126,11 @@ $new_note-&gt;text = 'Hello world';</code></pre>
 
 // $new_note-&gt;id is now set</code></pre>
         <h3>UPDATE and DELETE</h3>
-        <p>Pass existing entities (with a primary key set) to update or delete builders:</p>
+        <p>Pass existing entities (with a primary key set) to update or delete builders. Use <code>addEntity()</code> for a single entity or <code>addEntities()</code> for multiple:</p>
         <pre><code class="language-php">$note-&gt;text = 'Updated text';
 $this-&gt;updateQuery()-&gt;addEntity($note)-&gt;execute();
 
-$this-&gt;deleteQuery()-&gt;addEntity($note)-&gt;execute();</code></pre>
+$this-&gt;deleteQuery()-&gt;addEntities([$note1, $note2])-&gt;execute();</code></pre>
         <h2>Entity helper methods</h2>
         <p>These methods are available on every entity (you rarely call them directly in application code):</p>
         <table>

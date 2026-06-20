@@ -84,7 +84,7 @@ class DatabaseInfoCollection extends BaseDatabaseInfoCollection
             <li><strong>Username</strong></li>
             <li><strong>Password</strong></li>
         </ol>
-        <p>You can register one or more databases. The framework picks the correct wrapper (MySQL or SQLite) based on the DSN.</p>
+        <p>You can register one or more databases. The framework picks the correct wrapper (MySQL or SQLite) based on the DSN. During <code>bootstrap()</code>, each connection is registered in <code>Globals</code> and can be retrieved later with <code>Globals::getDatabaseWrapper($name)</code> — see <a href="/documentation/models-and-query-builder">Models and query builder</a>.</p>
         <h2>Switching databases in a model</h2>
         <p>When you construct a model, pass the database name as the second argument:</p>
         <pre><code class="language-php">// Use SQLite

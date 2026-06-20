@@ -21,15 +21,15 @@
         <p>→ <a href="/documentation/routing">Routing</a></p>
         <h2>MVC</h2>
         <ul>
-            <li><strong>Controllers</strong> — auto-discovered from <code>src/Controller/</code>; handle requests and return responses</li>
-            <li><strong>Models</strong> — thin layer over the query builder, tied to an entity class and table name</li>
-            <li><strong>Views</strong> — plain PHP files in <code>src/View/</code>; data passed via <code>render()</code></li>
+            <li><strong>Controllers</strong> — auto-discovered from a configurable directory (default <code>src/Controller/</code>); handle requests and return responses</li>
+            <li><strong>Models</strong> — optional thin layer over the query builder, tied to an entity class and table name</li>
+            <li><strong>Views</strong> — plain PHP files in a configurable directory (default <code>src/View/</code>); data passed via <code>render()</code></li>
         </ul>
         <p>→ <a href="/documentation/controllers">Controllers</a> · <a href="/documentation/models-and-query-builder">Models and query builder</a> · <a href="/documentation/views">Views</a></p>
         <h2>Data layer</h2>
         <ul>
             <li><strong>Entities</strong> — PHP classes mapped to tables via <code>#[Column]</code> and <code>#[Primary]</code> attributes</li>
-            <li><strong>Query builder</strong> — fluent SELECT, INSERT, UPDATE, and DELETE builders</li>
+            <li><strong>Query builder</strong> — fluent SELECT, INSERT, UPDATE, and DELETE builders; also usable directly via <code>Globals::getDatabaseWrapper()</code> without a model</li>
             <li><strong>Subqueries</strong> — use a select query as a value in <code>whereIn</code> / <code>orIn</code></li>
             <li><strong>Transactions</strong> — insert and delete operations run inside transactions</li>
             <li><strong>Multi-database</strong> — MySQL and SQLite; switch per model</li>
