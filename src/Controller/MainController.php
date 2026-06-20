@@ -34,4 +34,10 @@ class MainController extends BaseController
         );
         $this->renderPage(['index'], ['sorted_routes' => $sorted_routes], 'Sparkframe Firestarter', 'home');
     }
+
+    #[Route('/404', RequestMethod::GET)]
+    public function not_found_404(): void
+    {
+        $this->redirect_404();
+    }
 }

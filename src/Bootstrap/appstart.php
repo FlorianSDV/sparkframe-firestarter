@@ -27,6 +27,10 @@ try {
 
     $requestHandler->handle();
 } catch (\Exception $e) {
+    if ($e->getCode() === 404) {
+        header('Location: /404');
+        exit;
+    }
     // Add here your own error handling. 
     // Don't show error messages in production environments.
     echo "<pre>";
