@@ -4,7 +4,8 @@
         <h1>Views</h1>
         <p>Views are plain PHP files that render HTML. Write standard PHP with optional markup — no separate template language to learn. Or, use a template engine like <a href="https://twig.symfony.com/">Twig</a> if you prefer.</p>
         <h2>Location and naming</h2>
-        <p>Views live in <code>src/View/</code>. The path you pass to <code>render()</code> maps directly to a file:</p>
+        <p>By default, views live in <code>src/View/</code>. You can change this base directory via the third argument to <code>initializeGlobals()</code> — see <a href="/documentation/application-structure">Application structure</a>.</p>
+        <p>The path you pass to <code>render()</code> maps directly to a file under that directory:</p>
         <table>
             <thead>
                 <tr>
@@ -27,6 +28,11 @@
                 </tr>
             </tbody>
         </table>
+        <h2>Custom view directory</h2>
+        <p>Set the view base directory in <code>appstart.php</code> when calling <code>initializeGlobals()</code>:</p>
+        <pre><code class="language-php">$view_dir = $root_dir . DIRECTORY_SEPARATOR . 'templates';
+$bootstrapper-&gt;initializeGlobals($root_dir, $controllers_dir, $view_dir);</code></pre>
+        <p>With this setup, <code>$this-&gt;render('notes/index', $data)</code> loads <code>templates/notes/index.php</code> instead of <code>src/View/notes/index.php</code>. Your controller code stays the same — only the base directory changes.</p>
         <h2>Render a view from a controller</h2>
         <pre><code class="language-php">$this-&gt;render('notes/index', ['notes' =&gt; $notes]);</code></pre>
         <p>The second argument is an associative array. Keys become variables in the view via <code>extract()</code>. In the example above, <code>$notes</code> is available inside <code>notes/index.php</code>.</p>

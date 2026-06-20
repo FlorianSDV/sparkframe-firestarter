@@ -28,6 +28,9 @@
             </tbody>
         </table>
         <p><code>redirect()</code> is <code>protected</code>; call it from within your controller.</p>
+        <h2>Custom controller directory</h2>
+        <p>By default, Firestarter discovers controllers from <code>src/Controller/</code>. You can change this by passing a different path as the second argument to <code>initializeGlobals()</code> in <code>appstart.php</code>.</p>
+        <p>Controller classes must still use the <code>App\Controller\</code> namespace regardless of where the files live. See <a href="/documentation/application-structure">Application structure</a> for the full setup and constraints.</p>
         <h2>Create a new controller</h2>
         <h3>Step 1 — Create the file</h3>
         <p>Create <code>src/Controller/TagsController.php</code> in the <code>App\Controller</code> namespace:</p>

@@ -69,6 +69,74 @@ class NotesModel extends Model
                 </tr>
             </tbody>
         </table>
+        <h3>Query builder without a model</h3>
+        <p>A model ties a fixed <code>TABLE_NAME</code>, entity class, and database name together. You do not always need that layer — you can create query builders directly from a <code>DatabaseWrapperInterface</code> and pass the table name on each call.</p>
+        <p>This is useful for ad-hoc queries, setup scripts, or working with multiple tables without creating a model per table. You still need an entity class for column metadata and result hydration.</p>
+        <p>After <code>bootstrap()</code>, retrieve the database wrapper by name — it is already created and registered for you:</p>
+        <pre><code class="language-php">use App\Entity\TagEntity;
+use Sparkframe\Bootstrap\Globals;
+
+$db = Globals::getDatabaseWrapper('MySQL');</code></pre>
+        <p>The name must match a key from your <a href="/documentation/configuration">DatabaseInfoCollection</a> (for example <code>&#039;MySQL&#039;</code> or <code>&#039;SqLite&#039;</code>). You do not need to instantiate a wrapper yourself — <code>bootstrap()</code> registers them via <code>Globals::addDatabaseWrapper()</code>.</p>
+        <p>Create query builders by passing the table name and entity class:</p>
+        <pre><code class="language-php">// SELECT
+$tags = $db-&gt;selectQuery('Tags', TagEntity::class)
+    -&gt;select(TagEntity::ID, TagEntity::NAME)
+    -&gt;execute();
+
+// INSERT
+$tag = new TagEntity();
+$tag-&gt;name = 'Important';
+$db-&gt;insertQuery('Tags', TagEntity::class)
+    -&gt;addEntity($tag)
+    -&gt;execute();
+
+// UPDATE
+$db-&gt;updateQuery('Tags', TagEntity::class)-&gt;addEntity($tag)-&gt;execute();
+
+// DELETE
+$db-&gt;deleteQuery('Tags', TagEntity::class)-&gt;addEntities([$tag1, $tag2])-&gt;execute();</code></pre>
+        <table>
+            <thead>
+                <tr>
+                    <th>Approach</th>
+                    <th>When to use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Model</strong></td>
+                    <td>Repeated access to one table — table name and database are fixed on the class</td>
+                </tr>
+                <tr>
+                    <td><strong>Database wrapper</strong></td>
+                    <td>Flexible table access, one-off queries, or scripts outside the normal request flow</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Required</th>
+                    <th>Not required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Entity class with <code>#[Column]</code> and <code>#[Primary]</code></td>
+                    <td>Model class</td>
+                </tr>
+                <tr>
+                    <td><code>Globals::getDatabaseWrapper($name)</code> after bootstrap</td>
+                    <td><code>DatabaseWrapperFactory</code> in application code</td>
+                </tr>
+                <tr>
+                    <td>Table name as a string per query</td>
+                    <td><code>TABLE_NAME</code> constant on a model</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Setup scripts that run before bootstrap (such as <code>MySql/create-mysql-db.php</code>) create their own wrapper via <code>DatabaseWrapperFactory</code>. In normal application code after bootstrap, use <code>Globals::getDatabaseWrapper()</code> instead.</p>
         <h2>Create a new model</h2>
         <h3>Step 1 — Create the entity</h3>
         <p>See <a href="/documentation/entities">Entities</a>. You need an entity class and a database table.</p>
@@ -177,10 +245,21 @@ $this-&gt;insertQuery()
 
 // $new_note-&gt;id is set automatically</code></pre>
         <ul>
-            <li>Add one or more entities with <code>addEntity()</code>.</li>
+            <li>Add one or more entities with <code>addEntity()</code> or <code>addEntities()</code>.</li>
             <li>Insert runs inside a transaction.</li>
             <li>After insert, the primary key is assigned via <code>setId()</code>.</li>
         </ul>
+        <p>Insert multiple entities in one call with <code>addEntities()</code>:</p>
+        <pre><code class="language-php">$note_1 = new NoteEntity();
+$note_1-&gt;text = 'First note';
+
+$note_2 = new NoteEntity();
+$note_2-&gt;text = 'Second note';
+
+$this-&gt;insertQuery()
+    -&gt;addEntities([$note_1, $note_2])
+    -&gt;execute();</code></pre>
+        <p>Every entity in the array must match the entity class the query builder expects — the same validation as <code>addEntity()</code>.</p>
         <h2>UPDATE query builder</h2>
         <pre><code class="language-php">$note-&gt;text = 'New text';
 
@@ -196,10 +275,9 @@ $this-&gt;updateQuery()
         <pre><code class="language-php">$this-&gt;deleteQuery()
     -&gt;addEntity($note)
     -&gt;execute();</code></pre>
-        <p>Delete multiple entities in one query:</p>
+        <p>Delete multiple entities in one query with <code>addEntities()</code>:</p>
         <pre><code class="language-php">$this-&gt;deleteQuery()
-    -&gt;addEntity($note1)
-    -&gt;addEntity($note2)
+    -&gt;addEntities([$note1, $note2])
     -&gt;execute();</code></pre>
         <p>Delete runs inside a transaction.</p>
         <h2>Firestarter example: full CRUD</h2>
