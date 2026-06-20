@@ -8,6 +8,8 @@ If you just want to run the stack the simplest way is to create the [production 
 If you want to [run everything locally](#when-you-want-to-run-everything-locally) on your host, or [run only MySql in a container](#when-you-dont-want-to-use-docker-but-you-do-want-to-run-mysql-in-a-container) that is also possible.
 
 # When you want to use Docker:
+If you are using private composer packages, see [Using private composer packages](#using-private-composer-packages).
+
 ## When using a devcontainer
 1. Create the `.env` file:
 ```shell
@@ -133,3 +135,11 @@ make stop-mysql-container
 make stop-dev-container
 make stop-production-container
 ```
+# Using private composer packages
+If you are using private composer packages you need to add the following to the .env file:
+```shell
+COMPOSER_AUTH_PATH=/path/to/your/auth.json
+```
+Then uncomment the secret sections in the docker-compose.yml, docker-compose-dev.yml and Dockerfile files.
+
+Then recreate the images as you would normally do.

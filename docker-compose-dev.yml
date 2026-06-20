@@ -1,10 +1,13 @@
+# In case you have private composer packages you want to install in this project
+# you can uncomment the commented out secret sections.
+
 services:
   sparkframe-firestarter-dev:
     image: sparkframe-firestarter:dev
     container_name: sparkframe-firestarter-app-dev
     build:
       context: .
-      secrets: [composer_auth]
+      # secrets: [composer_auth] # Uncomment if you are using private composer packages
       target: dev
     ports:
       - 8000:80
@@ -18,9 +21,10 @@ services:
       db:
         condition: service_healthy
 
-secrets:
-  composer_auth:
-    file: ${COMPOSER_AUTH_PATH}
+# Uncomment if you are using private composer packages
+# secrets:
+#   composer_auth:
+#     file: ${COMPOSER_AUTH_PATH}
 
 volumes:
   vendor_dev:
