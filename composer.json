@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "floriansdv/sparkframe": "v0.1.0-alpha"
+    "floriansdv/sparkframe": "v1.0.0"
   },
   "scripts": {
     "create-sqlite-db": [
