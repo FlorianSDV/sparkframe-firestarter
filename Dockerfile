@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM php:8.5.5RC1-apache-bookworm AS base
+FROM php:8.5.7-apache-bookworm AS base
 
 RUN apt update \
     && apt install zip -y
